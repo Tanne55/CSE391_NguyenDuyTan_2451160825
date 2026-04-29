@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        header { background: #333; color: #fff; padding: 1rem; }
+        nav a { color: #fff; margin-right: 15px; text-decoration: none; }
+        section { padding: 20px; border-bottom: 1px solid #ccc; }
+        .product-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+        article { border: 1px solid #ddd; padding: 15px; width: 200px; }
+        img { max-width: 100%; height: auto; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #000; padding: 10px; text-align: center; }
+        footer { background: #eee; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TAN STORE</h1>
+        <nav>
+            <a href="#featured">Sản phẩm nổi bật</a>
+            <a href="#comparison">Bảng so sánh</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="featured">
+            <h2>Sản phẩm nổi bật</h2>
+            <div class="product-grid">
+                
+                <article>
+                    <figure>
+                        <img src="./laptop.webp" alt="Laptop Gaming">
+                    </figure>
+                    <h3>Laptop Gaming Pro</h3>
+                    <p>Cấu hình mạnh mẽ cho sinh viên CNTT.</p>
+                    <p>Giá: <strong>25.000.000đ</strong></p>
+                    <a href="#">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="./phone.webp" alt="Smartphone">
+                    </figure>
+                    <h3>Smartphone Ultra</h3>
+                    <p>Camera sắc nét, màn hình 120Hz.</p>
+                    <p>Giá: <mark>18.500.000đ</mark></p>
+                    <a href="#">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="./airpod.webp" alt="Tai nghe">
+                    </figure>
+                    <h3>Tai nghe Wireless</h3>
+                    <p>Chống ồn chủ động, pin 40h.</p>
+                    <p>Giá: <strong>5.200.000đ</strong></p>
+                    <a href="#">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="./banphim.webp" alt="Bàn phím cơ">
+                    </figure>
+                    <h3>Bàn phím cơ RGB</h3>
+                    <p>Switch Blue gõ cực sướng tay.</p>
+                    <p>Giá: <mark>1.200.000đ</mark></p>
+                    <a href="#">Mua ngay</a>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="comparison">
+            <h2>Bảng so sánh sản phẩm LAPTOP</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu chí</th>
+                        <th>Dell XPS 13</th>
+                        <th>MacBook Air M2</th>
+                        <th>HP Envy 13</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hệ điều hành</td>
+                        <td>Windows 11</td>
+                        <td>macOS</td>
+                        <td>Linux</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>8GB</td>
+                        <td>16GB</td>
+                        <td>32GB</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Hỗ trợ & Bảo hành</td>
+                        <td>12 tháng</td>
+                        <td>24 tháng</td>
+                        <td>12 tháng</td>
+                    </tr>
+                    <tr>
+                        <td>Hỗ trợ tại nhà</td>
+                        <td>Hỗ trợ online</td>
+                        <td>Hỗ trợ tại trung tâm</td>
+                    </tr>
+                    <tr>
+                        <td>Khuyến mãi</td>
+                        <td colspan="3">Tặng kèm túi chống sốc và chuột không dây</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>© 2026 NGUYỄN DUY TÂN - TLU Student</p>
+        <p>
+            <a href="https://example.com/policy">Chính sách</a> | 
+            <a href="mailto:ngtanpqkg2020@example.com">Liên hệ</a> | 
+            <a href="#faq">FAQ</a>
+        </p>
+    </footer>
+
+</body>
+</html>

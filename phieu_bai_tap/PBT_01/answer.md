@@ -78,4 +78,8 @@ CÂU A4 (5đ) — Table:
 PHẦN B — THỰC HÀNH CODE (60 điểm)
 Bài B1 (15đ) — Trang Profile cá nhân
 Trả lời: ![Trang-ca-nhan](./profile.html)
+Bài B2 (15đ) — Trang Sản phẩm E-Commerce
+Trả lời: ![Trang-san-pham](./products.html)
+
+
     
