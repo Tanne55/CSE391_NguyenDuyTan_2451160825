@@ -60,5 +60,94 @@ Trả lời:
 Ví dụ thực tế:Ảnh logo thương hiệu ở góc trang web → alt="Logo Apple"
 2. Cách 2 phù hợp cho ảnh cần thêm ngữ cảnh hoặc thông tin chi tiết, giúp người dùng (và cả screen reader) hiểu rõ hơn nội dung ảnh.
 Ví dụ thực tế:Trang sản phẩm E-Commerce: ảnh iPhone kèm chú thích giá bán → figcaption="iPhone 16 Pro Max — 25.990.000đ"
+PHẦN C — PHÂN TÍCH & SUY LUẬN (20 điểm)
+Câu C1 (10đ) — Debug Form
+Trả lời:
+Lỗi 1: Dòng 2 — Input "Tên" không có thẻ <label>, vi phạm accessibility.
+Sửa: <label for="fullname">Tên:</label> <input type="text" id="fullname" name="fullname" required>
+Lỗi 2: Dòng 4 — Input "Email" dùng placeholder thay thế nhãn, trình đọc màn hình sẽ không nhận diện được mục đích ô này.
+Sửa: <label for="email">Email:</label> <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+Lỗi 3: Dòng 6 & 7 — Hai ô "Mật khẩu" không có thuộc tính name, dữ liệu sẽ không được gửi lên server khi submit form.
+Sửa: <input type="password" id="pwd" name="password" required> ... <input type="password" id="re-pwd" name="re_password" required>
+Lỗi 4: Dòng 9 — Input "Phone" dùng type="text", không tối ưu bàn phím số trên di động và thiếu nhãn đúng cách, thiếu cả pattern,..
+Sửa: <label for="phone">Phone:</label> <input type="tel" id="phone" name="phone" value="0901234567">
+Lỗi 5: Dòng 11 — Thẻ <select> thiếu thuộc tính name và nhãn mô tả, người dùng không biết chọn tỉnh thành để làm gì.
+Sửa: <label for="city">Tỉnh/Thành phố:</label> <select id="city" name="city">...</select>
+Lỗi 6: Dòng 12 & 13 — Các <option> thiếu thuộc tính value, server sẽ nhận giá trị text thô, khó xử lý dữ liệu.
+Sửa: <option value="hanoi">Hà Nội</option> <option value="hcm">TP.HCM</option>
+Lỗi 7: Dòng 16 — Thẻ <label> cho điều khoản thiếu thẻ <input type="checkbox"> bên trong hoặc liên kết for, khiến người dùng không thể tích chọn.
+Sửa: <input type="checkbox" id="tos" name="tos" required> <label for="tos">Tôi đồng ý điều khoản</label>
+Lỗi 8: Dòng 1 — Thẻ <form> thiếu thuộc tính action và method, trình duyệt sẽ không biết gửi dữ liệu đi đâu và gửi bằng cách nào (GET/POST).
+Sửa: <form action="/register" method="POST"> //ví dụ là trang đăng kí
+Lỗi 9: Dòng 19 — Nút submit không có aria-label để hỗ trợ accessibility 
+Sửa: <input type="submit" value="Gửi" aria-label="Gửi form đặt hàng">
+Code sau sửa:
+<form action="/submit-form" method="POST">
+    <div>
+        <label for="fullname">Tên:</label>
+        <input type="text" id="fullname" name="fullname" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+    </div>
+    <div>
+        <label for="pwd">Mật khẩu:</label>
+        <input type="password" id="pwd" name="password" required>
+    </div>
+    <div>
+        <label for="re-pwd">Nhập lại mật khẩu:</label>
+        <input type="password" id="re-pwd" name="re_password" required>
+    </div>
+    <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" value="0901234567">
+    </div>
+    <div>
+        <label for="city">Tỉnh/Thành phố:</label>
+        <select id="city" name="city">
+            <option value="hanoi">Hà Nội</option>
+            <option value="hcm">TP.HCM</option>
+        </select>
+    </div>
+    <div>
+        <input type="checkbox" id="tos" name="tos" required>
+        <label for="tos">Tôi đồng ý điều khoản</label>
+    </div>
+    <input type="submit" value="Gửi" aria-label="Gửi form đặt hàng">
+</form>
+Câu C2 (10đ) — Thiết kế chiến lược Validation
+Trả lời:
+Form mẫu:
+<form action="/api/register-bank" method="POST">
+    <!-- Email -->
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <!-- CMND/CCCD -->
+    <label>Số CCCD (12 số):</label>
+    <input type="text" name="cccd" pattern="\d{12}" title="Vui lòng nhập đúng 12 chữ số" required>
+    <!-- Số tài khoản -->
+    <label>Số tài khoản (10-15 số):</label>
+    <input type="text" name="account_number" pattern="\d{10,15}" title="Số tài khoản từ 10-15 chữ số" required>
+    <!-- Mã PIN -->
+    <label>Mã PIN (6 số):</label>
+    <input type="password" name="pin" pattern="\d{6}" maxlength="6" inputmode="numeric" required>
+    <button type="submit">Đăng ký</button>
+</form>
+Giải thích: HTML5 validation đủ an toàn cho ứng dụng ngân hàng chưa? Tại sao?
+Trả lời: HTML5 validation hoàn toàn không đủ an toàn cho các ứng dụng ngân hàng vì 3 lý do sau:
+- Dễ bị vô hiệu hóa: Ta có thể mở F12 và xóa hoặc chỉnh thuộc tính như required hoặc pattern của input
+- Vượt qua bằng công cụ: Kẻ xấu có thể gửi dữ liệu trực tiếp đến Server thông qua các công cụ như Postman, cURL mà không cần đi qua form HTML, khiến mọi bước kiểm tra trên trình duyệt trở nên vô nghĩa.
+- Mục đích thực sự: HTML5 validation chỉ nhằm mục đích nâng cao trải nghiệm người dùng (UX), giúp họ phát hiện lỗi nhập liệu ngay lập tức mà không cần chờ Server phản hồi.
+3 loại Validation HTML5 KHÔNG THỂ làm được (Phải dùng JavaScript)
+Trả lời: 
+- Kiểm tra tính duy nhất (Unique Check): HTML5 không thể kiểm tra xem "Số tài khoản này đã tồn tại trong hệ thống chưa". Việc này cần gọi API (AJAX/Fetch) để kiểm tra trong cơ sở dữ liệu.
+- Logic phụ thuộc (Dependent Validation): Ví dụ: Nếu người dùng chọn "Phương thức nhận mã là Email" thì ô "Email" trở thành bắt buộc, nếu chọn "SMS" thì ô "Số điện thoại" mới bắt buộc. HTML5 không xử lý được logic "nếu-thì" này. (if-else)
+- Xác nhận khớp dữ liệu (Match Confirmation): HTML5 không có cơ chế mặc định để kiểm tra xem giá trị ô "Mật khẩu" có trùng khớp hoàn toàn với ô "Nhập lại mật khẩu" hay không.
+2 rủi ro bảo mật nếu chỉ validate trên Frontend
+Trả lời:
+- Tấn công SQL Injection hoặc XSS: Kẻ tấn công có thể xóa bỏ validation ở Frontend để gửi các đoạn mã độc (script) hoặc các câu lệnh truy vấn SQL vào form. Nếu Backend không lọc lại, dữ liệu này sẽ thực thi và có thể làm lộ thông tin khách hàng hoặc phá hủy cơ sở dữ liệu.
+- Dữ liệu rác và sai lệch hệ thống: Người dùng có thể vô tình hoặc hữu ý gửi các giá trị âm (ví dụ số tiền chuyển khoản là -1.000.000) hoặc định dạng sai lệch. Điều này dẫn đến sai sót trong tính toán số dư, gây thiệt hại tài chính nghiêm trọng cho ngân hàng.
+
 
 
