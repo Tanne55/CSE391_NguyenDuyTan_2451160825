@@ -112,6 +112,10 @@ Trả lời: Chọn trang shoppe.vn
     - Form không có action, xử lí bằng js, react bên dưới
     - Form dùng method mặc định là get để lấy keyword 
     - Input có type mặc định là text
+PHẦN C — SUY LUẬN (20 điểm)
+Câu C1 (10đ) — Thiết kế cấu trúc
+![file_detail](./detail.html)
+
 
 
     
