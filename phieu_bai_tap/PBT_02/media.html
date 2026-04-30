@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Sản phẩm Multimedia</title>
+</head>
+<body>
+
+    <header>
+        <!-- SVG Inline: Logo đơn giản hình tròn kết hợp hình vuông -->
+        <svg width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="100" height="40" fill="#4CAF50" />
+            <circle cx="75" cy="25" r="20" fill="#2196F3" />
+            <circle cx="75" cy="25" r="20" fill="#2196F3" />
+            <text x="30" y="30" fill="white" font-size="10">NDTStore</text>
+        </svg>
+        <h1>Showcase Sản Phẩm Công Nghệ</h1>
+    </header>
+
+    <main>
+        <!-- Phần 1: Hình ảnh sản phẩm -->
+        <section id="gallery">
+            <h2>Hình ảnh thực tế</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                
+                <figure style="margin: 0; max-width: 300px;">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500" 
+                         alt="iPhone 16 Pro màu Titan tự nhiên nhìn từ góc nghiêng" 
+                         loading="lazy" 
+                         style="max-width: 100%; height: auto; border-radius: 8px;">
+                    <figcaption>Thiết kế titan sang trọng và bền bỉ.</figcaption>
+                </figure>
+
+                <figure style="margin: 0; max-width: 300px;">
+                    <img src="https://cdn.tgdd.vn/Files/2019/11/02/1214864/tim-hieu-cong-nghe-man-hinh-super-retina-xdr-1.jpg" 
+                         alt="Màn hình Super Retina XDR hiển thị màu sắc sống động" 
+                         loading="lazy" 
+                         style="max-width: 100%; height: auto; border-radius: 8px;">
+                    <figcaption>Màn hình hiển thị sắc nét đến từng chi tiết.</figcaption>
+                </figure>
+
+                <figure style="margin: 0; max-width: 300px;">
+                    <img src="https://cdn-media.sforum.vn/storage/app/media/ctvseo_maihue/3-mat-camera-iphone-co-tac-dung-gi/3-mat-camera-iphone-co-tac-dung-gi-1.jpg" 
+                         alt="Cụm camera ba ống kính chuyên nghiệp ở mặt sau" 
+                         loading="lazy" 
+                         style="max-width: 100%; height: auto; border-radius: 8px;">
+                    <figcaption>Hệ thống camera nâng tầm nhiếp ảnh di động.</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Phần 2: Video giới thiệu -->
+        <section id="videos">
+            <h2>Video trải nghiệm</h2>
+            
+            <div style="margin-bottom: 30px;">
+                <h3>TVC Quảng cáo (YouTube)</h3>
+                <!-- iframe: Nhúng video từ bên thứ 3 -->
+                <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/70gCxCTpvBg" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        style="max-width: 100%;">
+                </iframe>
+            </div>
+
+            <div>
+                <h3>Review chi tiết (Self-hosted)</h3>
+                <!-- video: Sử dụng nhiều source để tăng tính tương thích -->
+                <video controls poster="https://via.placeholder.com/800x450?text=Bam+vao+de+xem+Review" 
+                       style="max-width: 100%; height: auto;">
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.webm" type="video/webm">
+                    Trình duyệt của bạn không hỗ trợ thẻ video.
+                </video>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Phần 3: Âm thanh -->
+        <section id="audio">
+            <h2>Nhạc nền giới thiệu</h2>
+            <p>Nghe cảm hứng thiết kế của chúng tôi:</p>
+            <audio controls>
+                <source src="./sample.mp3" type="audio/mpeg">
+                Trình duyệt của bạn không hỗ trợ thẻ audio.
+            </audio>
+        </section>
+
+    </main>
+
+    <footer style="margin-top: 50px; text-align: center;">
+        <p>&copy; 2026 Cửa hàng NDTStore - Multimedia Showcase</p>
+    </footer>
+
+</body>
+</html>
