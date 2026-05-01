@@ -119,6 +119,8 @@ Câu C2 (10đ) — So sánh & Tranh luận:
 - Trả lời: 
 Việc lạm dụng <div> (div-soup) không giúp chúng ta nhanh hơn, mà chỉ đang tạo ra một đống mã nguồn "câm lặng". Có hai lý do kỹ thuật cốt yếu để chúng ta phải dùng Semantic HTML. Lý do thứ nhất và cũng là quan trọng nhất, SEO (Tối ưu hóa tìm kiếm): Các bot của Google hay Bing không đủ thông minh để hiểu ý nghĩa của một class="tieu-de-quan-trong". Chúng tìm kiếm các thẻ như <h1>, <article> hay <nav> để xác định đâu là nội dung chính. Nếu mọi thứ đều là <div>, trang web của bạn sẽ trông như một tờ báo không có tiêu đề trong mắt các công cụ tìm kiếm, khiến thứ hạng SEO tụt dốc thảm hại. Lý do thứ 2, Accessibility (Khả năng tiếp cận).  Đây không chỉ là vấn đề nhân văn mà còn là tiêu chuẩn kỹ thuật. Những người dùng khiếm thị sử dụng trình đọc màn hình (Screen Readers) phụ thuộc hoàn toàn vào ngữ nghĩa của thẻ. Một thẻ <button> giúp họ biết đó là nơi để nhấn, trong khi một thẻ <div> có gắn sự kiện click sẽ bị trình đọc bỏ qua hoàn toàn, trực tiếp loại bỏ một nhóm đối tượng khách hàng tiềm năng. Một ví dụ cụ thể: Hãy tưởng tượng cấu trúc menu. Nếu dùng <nav>, trình duyệt sẽ tự tạo ra một "landmark" (mốc định vị), cho phép người dùng dùng phím tắt để nhảy nhanh đến thanh điều hướng. Với <div>, họ phải "mò mẫm" qua hàng ngàn dòng code để tìm thấy thứ mình cần. Tuy nhiên, <div> không hề vô dụng. Nó vẫn là "vua" trong các trường hợp cần đóng gói để dàn trang (Layout). Khi bạn chỉ cần một cái hộp để nhóm các phần tử lại nhằm mục đích dùng CSS Flexbox, Grid hoặc tạo các hiệu ứng trang trí mà không làm thay đổi ý nghĩa của nội dung, thì <div> chính là lựa chọn đúng đắn và tinh gọn nhất.
 
+Video: link youtube - https://youtu.be/Kr5IrdycMuA
+
 
 
     

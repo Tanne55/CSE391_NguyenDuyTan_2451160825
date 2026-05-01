@@ -149,5 +149,7 @@ Trả lời:
 - Tấn công SQL Injection hoặc XSS: Kẻ tấn công có thể xóa bỏ validation ở Frontend để gửi các đoạn mã độc (script) hoặc các câu lệnh truy vấn SQL vào form. Nếu Backend không lọc lại, dữ liệu này sẽ thực thi và có thể làm lộ thông tin khách hàng hoặc phá hủy cơ sở dữ liệu.
 - Dữ liệu rác và sai lệch hệ thống: Người dùng có thể vô tình hoặc hữu ý gửi các giá trị âm (ví dụ số tiền chuyển khoản là -1.000.000) hoặc định dạng sai lệch. Điều này dẫn đến sai sót trong tính toán số dư, gây thiệt hại tài chính nghiêm trọng cho ngân hàng.
 
+Video: link youtube: https://youtu.be/F425g_D-CQc
+
 
 
