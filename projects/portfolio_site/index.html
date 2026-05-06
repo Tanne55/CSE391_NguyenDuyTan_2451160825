@@ -1,51 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
     <!-- CSS file sẽ được tạo riêng -->
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/portfolio.css">
-    <link rel="stylesheet" href="css/skills.css">
-    <link rel="stylesheet" href="css/variables.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/portfolio.css" />
+    <link rel="stylesheet" href="css/skills.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+  </head>
+  <body>
     <!-- Header: Logo + Nav links -->
     <header class="header">
-        <nav class="nav-container">
-            <div class="logo">NGUYENDUYTAN</div>
-            
-            <!-- Checkbox để làm Hamburger Menu (CSS-only) -->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-            </label>
+      <nav class="nav-container">
+        <div class="logo">NGUYENDUYTAN</div>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <!-- Checkbox để làm Hamburger Menu (CSS-only) -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+        </label>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <!-- Hero: Title + Subtitle + CTA Button -->
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <h1>Hi, I'm a <span>NGUYỄN DUY TÂN</span></h1>
-                <p>Full-Stack Developer | UI Designer | Problem Solver</p>
-                <a href="#work" class="btn-cta">View My Work</a>
-            </div>
-        </section>
+      <!-- Hero: Title + Subtitle + CTA Button -->
+      <section id="hero" class="hero">
+        <div class="hero-content">
+          <h1>Hi, I'm a <span>NGUYỄN DUY TÂN</span></h1>
+          <p>Full-Stack Developer | UI Designer | Problem Solver</p>
+          <a href="#work" class="btn-cta">View My Work</a>
+        </div>
+      </section>
+      <!-- About -->
+      <section id="about" class="about">
+        <div class="container about-grid">
+          <div class="about-image">
+            <img src="data:image/jpeg;base64,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" alt="Profile Picture" />
+          </div>
+          <div class="about-text">
+            <h2>Về tôi</h2>
+            <p>
+              Tôi là một sinh viên ngành Hệ thống Thông tin, đam mê xây dựng các
+              giải pháp phần mềm tối ưu. Với nền tảng kiến thức về lập trình
+              fullstack, tôi luôn tìm kiếm cơ hội để thử thách bản thân qua các
+              dự án thực tế.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
-    
-</body>
+  </body>
 </html>
