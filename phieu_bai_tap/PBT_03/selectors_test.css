@@ -1,0 +1,31 @@
+h1 {
+  color: red;
+}
+
+.price {
+  color: green;
+}
+
+#app header {
+  color: yellow;
+}
+
+nav a:first-child {
+  color: black;
+}
+
+.product.featured h2 {
+  color: violet;
+}
+
+article > p {
+  color: brown;
+}
+
+a[href="/"] {
+  color: green;
+}
+
+.top-bar.dark h1 {
+  color: rgb(238, 130, 130);
+}
