@@ -67,3 +67,36 @@ Từ khóa inherit buộc phần tử phải lấy màu từ cha trực tiếp c
     Color = blue: Thẻ h2 này không có ID #featured và cũng không có class .highlight, nên các quy tắc màu đỏ và xanh lá bị loại bỏ mà lấy màu từ .card là blue (kế thừa)
 4. "Mô tả sản phẩm B" (p.highlight) có color = green
 - Color = green: Mặc dù có quy tắc .card p đòi inherit (lấy màu xanh từ cha), nhưng phần tử này có class .highlight đi kèm !important. Một lần nữa, !important chặn đứng mọi nỗ lực kế thừa hay tính điểm specificity khác để áp đặt màu xanh lá. (yêu em bất chấp !!!)
+PHẦN B — THỰC HÀNH CODE (55 điểm)
+Bài B1 (20đ) — Style trang Profile
+- Liệt kê các kiểu selectors sử dụng: 
+1. Element Selector: `body`, `header`, `footer`, `th`
+   - Nhắm trực tiếp vào tên thẻ HTML để định dạng chung.
+2. Class Selector: `.nav-link`, `.skills-table`, `.active`
+   - Dùng để áp dụng phong cách cho các nhóm phần tử cụ thể có cùng thuộc tính. 
+3. ID Selector: `#skills-section`, `#main-footer`
+   - Nhắm vào các phần tử duy nhất trên trang để định dạng đặc biệt.
+4. Descendant Selector (Selector con cháu): `nav ul`, `.skills-table th`
+   - Định dạng các phần tử nằm bên trong một phần tử khác để kiểm soát bố cục phân cấp.
+5. Pseudo-class Selector: `:hover`, `:nth-child(even)`
+   - Xử lý các trạng thái tương tác hoặc vị trí logic của phần tử trong danh sách.
+Bài B2 (20đ) — Box Model Lab
+- Hộp 1 (content-box): chiều rộng thực tế = 349,696 px (đo từ DevTools)
+- Hộp 2 (border-box): chiều rộng thực tế = 300 px (đo từ DevTools)
+- Giải thích sự khác biệt: để kích thước thật của element thay vì = content-box = (width + padding + border)thì giờ width mà ta xét ban đầu sẽ là tổng của (content + padding + border) = border-box (Được tự tính)
+- Phần 2 tính toán trường hợp không border-box cho thấy > 1000px: 
+    Cột trái (sidebar): 250px, background nhạt, padding: 15px -> thật ra = 280px vì cộng thêm 15*2px từ padding
+    Cột giữa (content): 500px, padding: 20px -> thật ra = 540px vì cộng thêm 20*2px từ padding
+    Cột phải (ads): 250px, background nhạt, padding: 15px -> thật ra = 280px vì cộng thêm 15*2px từ padding
+    -> Tổng = 280 + 280 + 540: 1100px quá 100px so với 1000px đề ra => vỡ
+Bài B3 (15đ) — Specificity Battle:
+1. Liệt kê 10 rules + specificity score:
+- Trong file css
+Element cuối cùng hiển thị màu gì? Tại sao?
+- Màu hiển thị: Màu Brown (Nâu). Giải thích: Vì selector #demo.text.highlight có điểm số cao nhất $(1, 2, 0)$. Trong CSS, trình duyệt sẽ ưu tiên rule có độ ưu tiên (Specificity) cao nhất bất kể nó nằm ở vị trí nào trong file.
+Chụp screenshot kết quả
+- Trong phần Screenshots
+Thay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.
+- Kết quả: KHÔNG THAY ĐỔI.
+Giải thích: Thứ tự viết code (Cascade) chỉ có tác dụng khi hai selector có cùng điểm Specificity. Trong trường hợp này, 10 rule của chúng ta có điểm số khác nhau hoàn toàn, nên rule mạnh nhất sẽ luôn thắng. Cho vd như ID sẽ là 100đ, class là 10đ, còn tag là 1đ
+

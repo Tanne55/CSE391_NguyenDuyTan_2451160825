@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+/* 1. Reset: Border-box - Giúp quản lý kích thước chính xác hơn */
+
+/* 2. Body: Typography & Background */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #1c1e21;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 3. Header: Gradient & Padding */
+header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+}
+
+/* 4. Navigation: Links & Hover/Active States */
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #a5c7ff; /* Màu cụ thể */
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Hover state */
+.nav-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Active state: Kiểu khác biệt cho trang hiện tại */
+.nav-link.active {
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 2px;
+}
+
+/* 5. Table Styling: Zebra & Hover Row */
+.skills-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  border-collapse: collapse; /* Gộp border */
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skills-table th {
+  background-color: #1e3c72; /* Header đậm */
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+}
+
+.skills-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Zebra striping: Hàng chẵn đổi màu nền */
+.skills-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Hover row: Đổi màu khi di chuột qua hàng */
+.skills-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* 6. Footer: Styling */
+footer {
+  background-color: #1c1e21;
+  color: #90949c;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
