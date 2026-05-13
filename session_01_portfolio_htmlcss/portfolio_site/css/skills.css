@@ -1,0 +1,57 @@
+.skills {
+    padding: 80px 5%;
+    background: var(--dark-white);
+}
+.skills-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.skills-text{
+    display: grid;
+    gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 30px; 
+}
+.skills-container { 
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột bằng nhau */
+    gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 30px; 
+} /*cách phần about*/
+
+.skill-item { margin-bottom: 20px; } /*cách phần dưới của mỗi item*/
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.progress-line {
+    height: 10px;
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-line span {
+    height: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    border-radius: 10px;
+    animation: slideIn 1.5s cubic-bezier(0.1, 0, 0.2, 1) forwards;
+    transform: scaleX(0); /* Bắt đầu từ 0 */
+    transform-origin: left;
+}
+
+@keyframes slideIn {
+    100% { transform: scaleX(1); }
+}
