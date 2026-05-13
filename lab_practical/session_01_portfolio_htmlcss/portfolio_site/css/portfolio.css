@@ -1,0 +1,93 @@
+/* Portfolio Section chung */
+.portfolio {
+    padding: 80px 5%;
+    background-color: var(--white); /* Giả sử bạn có biến này */
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 1. CSS Grid - 3 cột desktop, 2 cột tablet, 1 cột mobile */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Desktop */
+    gap: 25px;
+}
+
+@media (max-width: 992px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Mobile */
+    }
+}
+
+/* 2. Thumbnail & Hover Effects */
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4 / 3; /* Giữ tỉ lệ ảnh luôn đẹp */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-item:hover .thumbnail img {
+    transform: scale(1.15); /* Hiệu ứng Zoom khi di chuột vào */
+}
+
+/* 3. CSS-only Lightbox (Ma thuật nằm ở :target) */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none; /* Ẩn mặc định */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+/* Khi URL có hash (#img1) trùng với ID của div này */
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    border: 4px solid #fff;
+    animation: zoomIn 0.3s ease-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(2); opacity: 1; }
+}
