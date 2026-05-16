@@ -1,0 +1,6 @@
+/* Blog layout specific styles */
+.sticky-top {
+    position: sticky;
+    top: 100px; /* Below sticky header */
+    z-index: 1;
+}
