@@ -87,6 +87,88 @@
                 <a href="#" class="btn btn-outline-primary">Read More</a>
               </div>
             </article>
+
+            <!-- Comment Section -->
+            <div class="comments-section mt-5">
+              <h4 class="mb-4 fw-bold">Comments (3)</h4>
+
+              <!-- Comment Form -->
+              <div class="card mb-5 border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+                  <h5 class="mb-0 fw-bold">Leave a Comment</h5>
+                </div>
+                <div class="card-body">
+                  <form id="commentForm">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="commentName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="commentName" name="name" required>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="commentEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="commentEmail" name="email" required>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="commentText" class="form-label">Comment</label>
+                      <textarea class="form-control" id="commentText" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary px-4 py-2">Post Comment</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Comments List -->
+              <div class="comments-list">
+                <!-- Parent Comment 1 -->
+                <div class="comment mb-4 comment-item fade-in">
+                  <div class="d-flex">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=14b8a6&color=fff" class="rounded-circle me-3" alt="Avatar" width="50" height="50" style="object-fit: cover;">
+                    <div class="flex-grow-1 comment-content">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="mb-0 fw-bold">John Doe</h6>
+                        <small class="text-muted">2 hours ago</small>
+                      </div>
+                      <p class="mb-2">Great article! Very helpful for beginners. The explanation of the grid system was very clear.</p>
+                      <button class="btn btn-sm btn-link text-decoration-none px-0 reply-btn">
+                        <i class="bi bi-reply"></i> Reply
+                      </button>
+
+                      <!-- Nested Reply -->
+                      <div class="comment reply ms-5 mt-3 comment-reply fade-in">
+                        <div class="d-flex">
+                          <img src="https://ui-avatars.com/api/?name=Nguyễn+Duy+Tân&background=0f172a&color=fff" class="rounded-circle me-3" alt="Avatar" width="40" height="40" style="object-fit: cover;">
+                          <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                              <h6 class="mb-0 fw-bold text-primary">Nguyễn Duy Tân</h6>
+                              <small class="text-muted">1 hour ago</small>
+                            </div>
+                            <p class="mb-2">Thank you! Glad it helped. Let me know if you have any questions.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Parent Comment 2 -->
+                <div class="comment mb-4 comment-item fade-in">
+                  <div class="d-flex">
+                    <img src="https://ui-avatars.com/api/?name=Alice+Smith&background=f59e0b&color=fff" class="rounded-circle me-3" alt="Avatar" width="50" height="50" style="object-fit: cover;">
+                    <div class="flex-grow-1 comment-content">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="mb-0 fw-bold">Alice Smith</h6>
+                        <small class="text-muted">5 hours ago</small>
+                      </div>
+                      <p class="mb-2">I love the color scheme you used for this portfolio. Teal and Slate go really well together.</p>
+                      <button class="btn btn-sm btn-link text-decoration-none px-0 reply-btn">
+                        <i class="bi bi-reply"></i> Reply
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Sidebar (4 columns) -->
