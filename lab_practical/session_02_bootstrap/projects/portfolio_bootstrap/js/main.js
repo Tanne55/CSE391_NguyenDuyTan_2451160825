@@ -1,6 +1,6 @@
 // Main JavaScript for Bootstrap Portfolio
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all components
     initNavbarScrollEffect();
     initContactForm();
@@ -28,7 +28,7 @@ function initContactForm() {
 
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const submitBtn = this.querySelector('button[type="submit"]');
@@ -58,7 +58,7 @@ function initCommentForm() {
 
     if (!commentForm) return;
 
-    commentForm.addEventListener('submit', function(e) {
+    commentForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -134,7 +134,7 @@ function createCommentElement(name, email, message) {
 // Initialize reply buttons
 function initReplyButtons() {
     document.querySelectorAll('.reply-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const commentItem = this.closest('.comment-item');
             const existingForm = commentItem.querySelector('.reply-form');
 
@@ -171,7 +171,7 @@ function initReplyButtons() {
             });
 
             // Handle submit
-            replyForm.querySelector('.submit-reply').addEventListener('click', function() {
+            replyForm.querySelector('.submit-reply').addEventListener('click', function () {
                 const name = replyForm.querySelector('input').value.trim();
                 const message = replyForm.querySelector('textarea').value.trim();
 
@@ -265,7 +265,7 @@ function showAlert(message, type) {
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
 
