@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B3 — Grid Layout E-Commerce</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body class="page-grid">
+    <header class="site-header">
+        <div class="logo">ShopTLU</div>
+        <nav class="header-nav" aria-label="Điều hướng">
+            <a href="#">Trang chủ</a>
+            <a href="#">Khuyến mãi</a>
+            <a href="#">Hỗ trợ</a>
+        </nav>
+        <div class="header-actions">
+            <a href="#">Giỏ hàng</a>
+        </div>
+    </header>
+
+    <section class="hero" aria-label="Banner khuyến mãi">
+        <div class="hero-copy">
+            <p class="hero-tag">Flash Sale</p>
+            <h1>Ưu đãi công nghệ tuần này</h1>
+            <p>Giảm đến 30% laptop, phụ kiện và thiết bị đeo.</p>
+            <a href="#" class="hero-cta">Mua ngay</a>
+        </div>
+
+        <article class="hero-featured product-card">
+            <span class="badge">Nổi bật</span>
+            <img src="https://placehold.co/640x360/0f172a/f8fafc?text=MacBook+Pro+M3" alt="MacBook Pro M3">
+            <div class="product-info">
+                <h2>MacBook Pro M3</h2>
+                <p class="price">45.990.000đ</p>
+                <p class="desc">Chip M3, màn hình Liquid Retina — sản phẩm nổi bật trong hero.</p>
+            </div>
+        </article>
+    </section>
+
+    <aside class="sidebar" aria-label="Bộ lọc sản phẩm">
+        <h2>Bộ lọc</h2>
+        <fieldset>
+            <legend>Danh mục</legend>
+            <label><input type="checkbox" checked> Điện thoại</label>
+            <label><input type="checkbox"> Laptop</label>
+            <label><input type="checkbox"> Phụ kiện</label>
+            <label><input type="checkbox"> Đồng hồ</label>
+        </fieldset>
+        <fieldset>
+            <legend>Giá</legend>
+            <label><input type="checkbox"> Dưới 5 triệu</label>
+            <label><input type="checkbox" checked> 5 – 20 triệu</label>
+            <label><input type="checkbox"> Trên 20 triệu</label>
+        </fieldset>
+        <fieldset>
+            <legend>Thương hiệu</legend>
+            <label><input type="checkbox" checked> Apple</label>
+            <label><input type="checkbox"> Samsung</label>
+            <label><input type="checkbox"> Xiaomi</label>
+        </fieldset>
+    </aside>
+
+    <main class="main-content">
+        <h2>Sản phẩm mới</h2>
+        <div class="product-grid">
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=iPhone+16" alt="iPhone 16">
+                <h3>iPhone 16</h3>
+                <p class="price">25.990.000đ</p>
+            </article>
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=AirPods+Pro" alt="AirPods Pro">
+                <h3>AirPods Pro</h3>
+                <p class="price">5.990.000đ</p>
+            </article>
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=iPad+Air" alt="iPad Air">
+                <h3>iPad Air</h3>
+                <p class="price">16.990.000đ</p>
+            </article>
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=Apple+Watch" alt="Apple Watch">
+                <h3>Apple Watch</h3>
+                <p class="price">9.990.000đ</p>
+            </article>
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=Magic+Keyboard" alt="Magic Keyboard">
+                <h3>Magic Keyboard</h3>
+                <p class="price">3.490.000đ</p>
+            </article>
+            <article class="product-card">
+                <img src="https://placehold.co/400x260/e2e8f0/334155?text=HomePod" alt="HomePod">
+                <h3>HomePod</h3>
+                <p class="price">7.990.000đ</p>
+            </article>
+        </div>
+    </main>
+
+    <aside class="ads" aria-label="Quảng cáo">
+        <h2 class="visually-hidden">Quảng cáo</h2>
+        <a href="#" class="ad-banner">
+            <img src="https://placehold.co/200x320/1e40af/f8fafc?text=Quang+cao+1" alt="Banner quảng cáo 1">
+        </a>
+        <a href="#" class="ad-banner">
+            <img src="https://placehold.co/200x200/7c3aed/f8fafc?text=Quang+cao+2" alt="Banner quảng cáo 2">
+        </a>
+    </aside>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 ShopTLU — Bài tập CSS Grid Layout (PBT_04 B3)</p>
+        <nav aria-label="Liên kết chân trang">
+            <a href="#">Chính sách</a>
+            <a href="#">Điều khoản</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </footer>
+</body>
+</html>
