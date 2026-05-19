@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B1 — CSS Positioning Playground</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">ShopTLU</div>
+        <nav class="site-nav" aria-label="Điều hướng chính">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Giới thiệu</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <aside class="sidebar">
+            <h2>Danh mục</h2>
+            <ul>
+                <li><a href="#">Điện thoại</a></li>
+                <li><a href="#">Laptop</a></li>
+                <li><a href="#">Phụ kiện</a></li>
+                <li><a href="#">Khuyến mãi</a></li>
+            </ul>
+            <p class="sidebar-note">Sidebar dùng <code>position: sticky</code> — cuộn trang để thấy sidebar "dính" dưới header.</p>
+        </aside>
+
+        <main class="main-content">
+            <h1>Sản phẩm nổi bật</h1>
+            <p class="intro">Cuộn xuống để kiểm tra header <strong>fixed</strong>, sidebar <strong>sticky</strong>, badge <strong>HOT</strong> và nút lên đầu trang.</p>
+
+            <div class="product-grid">
+                <article class="product-card">
+                    <span class="badge-hot" aria-label="Sản phẩm hot">HOT</span>
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=iPhone+16" alt="iPhone 16">
+                    <h2>iPhone 16</h2>
+                    <p class="price">25.990.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=MacBook+Pro" alt="MacBook Pro">
+                    <h2>MacBook Pro</h2>
+                    <p class="price">45.990.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+
+                <article class="product-card">
+                    <span class="badge-hot" aria-label="Sản phẩm hot">HOT</span>
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=AirPods+Pro" alt="AirPods Pro">
+                    <h2>AirPods Pro</h2>
+                    <p class="price">5.990.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=iPad+Air" alt="iPad Air">
+                    <h2>iPad Air</h2>
+                    <p class="price">16.990.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+
+                <article class="product-card">
+                    <span class="badge-hot" aria-label="Sản phẩm hot">HOT</span>
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=Apple+Watch" alt="Apple Watch">
+                    <h2>Apple Watch</h2>
+                    <p class="price">9.990.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://placehold.co/320x200/e2e8f0/334155?text=Magic+Keyboard" alt="Magic Keyboard">
+                    <h2>Magic Keyboard</h2>
+                    <p class="price">3.490.000đ</p>
+                    <p>Mô tả ngắn sản phẩm.</p>
+                </article>
+            </div>
+
+            <section class="filler">
+                <h2>Nội dung thêm (để scroll)</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.</p>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                <p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.</p>
+            </section>
+        </main>
+    </div>
+
+    <a href="#" class="scroll-top" aria-label="Cuộn lên đầu trang" title="Lên đầu">↑</a>
+</body>
+</html>
