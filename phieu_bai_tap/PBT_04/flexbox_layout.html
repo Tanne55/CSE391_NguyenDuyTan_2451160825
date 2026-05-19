@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2 — Flexbox Navigation &amp; Product Cards</title>
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">LOGO</div>
+
+        <nav class="nav-menu" aria-label="Menu chính">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+        </nav>
+
+        <div class="nav-auth">
+            <a href="#" class="btn-link">Login</a>
+            <a href="#" class="btn-link btn-register">Register</a>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <h1>Sản phẩm</h1>
+        <p class="subtitle">Lưới 4 cột dùng Flexbox — thu nhỏ cửa sổ để thấy <code>flex-wrap</code>.</p>
+
+        <section class="card-container" aria-label="Danh sách sản phẩm">
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=iPhone+16" alt="iPhone 16">
+                <div class="card-body">
+                    <h2>iPhone 16</h2>
+                    <p class="price">25.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=MacBook+Pro" alt="MacBook Pro">
+                <div class="card-body">
+                    <h2>MacBook Pro</h2>
+                    <p class="price">45.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=AirPods+Pro" alt="AirPods Pro">
+                <div class="card-body">
+                    <h2>AirPods Pro</h2>
+                    <p class="price">5.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=iPad+Air" alt="iPad Air">
+                <div class="card-body">
+                    <h2>iPad Air</h2>
+                    <p class="price">16.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=Apple+Watch" alt="Apple Watch">
+                <div class="card-body">
+                    <h2>Apple Watch</h2>
+                    <p class="price">9.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=Magic+Keyboard" alt="Magic Keyboard">
+                <div class="card-body">
+                    <h2>Magic Keyboard</h2>
+                    <p class="price">3.490.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=HomePod" alt="HomePod">
+                <div class="card-body">
+                    <h2>HomePod</h2>
+                    <p class="price">7.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+
+            <article class="card">
+                <img src="https://placehold.co/400x240/e2e8f0/334155?text=AirTag" alt="AirTag">
+                <div class="card-body">
+                    <h2>AirTag (4 pack)</h2>
+                    <p class="price">2.990.000đ</p>
+                </div>
+                <button type="button" class="btn-buy">Mua</button>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
