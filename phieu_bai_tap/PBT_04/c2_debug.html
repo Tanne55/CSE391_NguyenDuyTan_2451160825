@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C2 — Debug Flexbox (demo trước/sau)</title>
+    <link rel="stylesheet" href="./c2_debug.css">
+</head>
+<body>
+    <h1>C2 — Demo debug (chụp screenshot từng cặp trước/sau)</h1>
+
+    <section class="cards-broken">
+        <p class="label">Lỗi 1 — TRƯỚC (nút không thẳng hàng)</p>
+        <div class="card-container">
+            <div class="card"><img alt=""><h3>Sản phẩm A</h3><p>Mô tả ngắn.</p><button class="btn">Mua</button></div>
+            <div class="card"><img alt=""><h3>Sản phẩm B</h3><p>Mô tả dài hơn nhiều để card cao hơn các card khác trong cùng hàng.</p><button class="btn">Mua</button></div>
+            <div class="card"><img alt=""><h3>Sản phẩm C</h3><p>Trung bình.</p><button class="btn">Mua</button></div>
+        </div>
+    </section>
+
+    <section class="cards-fixed">
+        <p class="label">Lỗi 1 — SAU (flex column + margin-top: auto)</p>
+        <div class="card-container">
+            <div class="card"><img alt=""><h3>Sản phẩm A</h3><p>Mô tả ngắn.</p><button class="btn">Mua</button></div>
+            <div class="card"><img alt=""><h3>Sản phẩm B</h3><p>Mô tả dài hơn nhiều.</p><button class="btn">Mua</button></div>
+            <div class="card"><img alt=""><h3>Sản phẩm C</h3><p>Trung bình.</p><button class="btn">Mua</button></div>
+        </div>
+    </section>
+
+    <section>
+        <p class="label">Lỗi 2 — TRƯỚC (dính góc trái trên)</p>
+        <div class="hero-broken"><div class="hero-content"><h2>Tiêu đề Hero</h2><p>Nội dung</p></div></div>
+        <p class="label">Lỗi 2 — SAU (căn giữa)</p>
+        <div class="hero-fixed"><div class="hero-content"><h2>Tiêu đề Hero</h2><p>Nội dung</p></div></div>
+    </section>
+
+    <section>
+        <p class="label">Lỗi 3 — TRƯỚC (sidebar bị co)</p>
+        <div class="layout-broken">
+            <aside class="sidebar">Sidebar 250px</aside>
+            <main class="content"><p style="white-space: nowrap;">Nội dung rất dài không xuống dòng — sidebar sẽ bị ép nhỏ.</p></main>
+        </div>
+        <p class="label">Lỗi 3 — SAU (flex-shrink: 0)</p>
+        <div class="layout-fixed">
+            <aside class="sidebar">Sidebar 250px</aside>
+            <main class="content"><p style="white-space: nowrap;">Cùng nội dung dài — sidebar giữ đúng 250px.</p></main>
+        </div>
+    </section>
+</body>
+</html>
