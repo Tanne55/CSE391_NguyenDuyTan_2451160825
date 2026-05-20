@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2 — CSS Transitions &amp; Animations</title>
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <header class="demo-header">
+        <h1>PBT_05 — B2 Animations</h1>
+        <p>Hover card / nút / ảnh · Spinner · Fade-in khi scroll</p>
+    </header>
+
+    <main class="demo-main">
+        <section class="demo-section">
+            <h2>1. Card hover + 2. Button hover + 3. Image zoom</h2>
+            <div class="card-row">
+                <article class="anim-card">
+                    <div class="img-wrap">
+                        <img src="https://placehold.co/360x220/e2e8f0/334155?text=San+pham" alt="Sản phẩm demo">
+                    </div>
+                    <div class="anim-card-body">
+                        <h3>Tai nghe Pro</h3>
+                        <p class="price">2.490.000đ</p>
+                        <button type="button" class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+                <article class="anim-card">
+                    <div class="img-wrap">
+                        <img src="https://placehold.co/360x220/cbd5e1/1e293b?text=Loa+Bluetooth" alt="Loa Bluetooth">
+                    </div>
+                    <div class="anim-card-body">
+                        <h3>Loa Bluetooth</h3>
+                        <p class="price">1.290.000đ</p>
+                        <button type="button" class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>4. Loading spinner (@keyframes)</h2>
+            <div class="spinner-wrap">
+                <div class="spinner" role="status" aria-label="Đang tải"></div>
+                <p>Đang tải sản phẩm...</p>
+            </div>
+        </section>
+
+        <section class="demo-section scroll-zone">
+            <h2>5. Fade-in khi scroll (CSS only)</h2>
+            <p class="hint">Cuộn xuống — các khối dưới fade-in khi vào viewport.</p>
+
+            <div class="scroll-fade">Khối nội dung 1 — fade-in khi scroll.</div>
+            <div class="scroll-fade">Khối nội dung 2 — fade-in khi scroll.</div>
+            <div class="scroll-fade">Khối nội dung 3 — fade-in khi scroll.</div>
+            <div class="scroll-fade">Khối nội dung 4 — fade-in khi scroll.</div>
+            <div class="scroll-fade">Khối nội dung 5 — fade-in khi scroll.</div>
+        </section>
+    </main>
+</body>
+</html>

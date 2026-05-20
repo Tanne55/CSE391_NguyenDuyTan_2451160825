@@ -1,0 +1,206 @@
+/* PBT_05 B2 — Transitions & Animations */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #1e293b;
+    background: #f8fafc;
+}
+
+.demo-header {
+    padding: 1.5rem;
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+.demo-header h1 {
+    margin: 0 0 0.35rem;
+    font-size: 1.35rem;
+}
+
+.demo-header p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.demo-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.demo-section {
+    margin-bottom: 2.5rem;
+}
+
+.demo-section h2 {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* 1. Card hover */
+.anim-card {
+    flex: 1 1 280px;
+    max-width: 360px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    transition: all 0.3s ease;
+}
+
+.anim-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.16);
+}
+
+/* 3. Image zoom */
+.img-wrap {
+    overflow: hidden;
+    background: #e2e8f0;
+}
+
+.img-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.35s ease;
+}
+
+.anim-card:hover .img-wrap img {
+    transform: scale(1.1);
+}
+
+.anim-card-body {
+    padding: 1rem 1.1rem 1.25rem;
+}
+
+.anim-card-body h3 {
+    margin: 0 0 0.35rem;
+}
+
+.price {
+    margin: 0 0 1rem;
+    font-weight: 700;
+    color: #dc2626;
+}
+
+/* 2. Button hover */
+.btn-buy {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+    transform: scale(1.05);
+}
+
+/* 4. Spinner */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #e2e8f0;
+    border-top-color: #0f172a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 5. Fade-in khi scroll */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-zone {
+    padding-bottom: 4rem;
+}
+
+.scroll-zone .hint {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.scroll-fade {
+    margin-bottom: 3rem;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Scroll-driven (Chrome 115+, Safari 26+) */
+@supports (animation-timeline: view()) {
+    .scroll-fade {
+        animation: fadeIn 0.7s ease forwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+/* Fallback: fade khi load + delay (vẫn CSS-only, không JS) */
+@supports not (animation-timeline: view()) {
+    .scroll-fade {
+        animation: fadeIn 0.7s ease forwards;
+    }
+
+    .scroll-fade:nth-child(3) { animation-delay: 0.1s; }
+    .scroll-fade:nth-child(4) { animation-delay: 0.25s; }
+    .scroll-fade:nth-child(5) { animation-delay: 0.4s; }
+    .scroll-fade:nth-child(6) { animation-delay: 0.55s; }
+    .scroll-fade:nth-child(7) { animation-delay: 0.7s; }
+}
