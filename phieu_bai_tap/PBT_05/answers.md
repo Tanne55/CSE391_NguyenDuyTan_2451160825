@@ -141,6 +141,43 @@ hoặc `npx sass scss/style.scss css/main.css --watch` khi phát triển.
 
 ---
 
+# PHẦN B — GHI CHÚ BIÊN DỊCH (B3)
+
+**Nguồn SCSS:** thư mục `scss/` (refactor từ layout B1)
+
+| File | Vai trò |
+|------|---------|
+| `scss/_variables.scss` | 8+ biến màu, font, breakpoint, spacing |
+| `scss/_mixins.scss` | `respond-to`, `flex-center`, `card-shadow` |
+| `scss/_components.scss` | Layout responsive + nesting + `@extend %panel-surface` |
+| `scss/style.scss` | Import các partial |
+
+**Lệnh compile** (chạy trong `phieu_bai_tap/PBT_05/`):
+
+```bash
+sass scss/style.scss responsive.css
+```
+
+Hoặc:
+
+```bash
+npx sass scss/style.scss responsive.css --watch
+```
+
+**Output:** `responsive.css` — file `responsive.html` link tới đây.
+
+**Cấu trúc B:**
+
+| Bài | File |
+|-----|------|
+| B1 | `responsive.html`, `responsive.css` (compile từ SCSS) |
+| B2 | `animations.html`, `animations.css` |
+| B3 | `scss/*` + lệnh compile ở trên |
+
+**Screenshot B1** (lưu `screenshots/`): `b1_375px.png`, `b1_768px.png`, `b1_1200px.png`
+
+---
+
 # PHẦN C — PHÂN TÍCH
 
 ## Câu C1 — Phân tích trang web thực
