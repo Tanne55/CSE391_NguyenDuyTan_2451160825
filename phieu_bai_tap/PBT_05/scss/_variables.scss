@@ -1,0 +1,32 @@
+// Colors
+$primary-color: #0f172a;
+$secondary-color: #38bdf8;
+$accent-color: #dc2626;
+$text-color: #1e293b;
+$text-muted: #64748b;
+$bg-page: #f8fafc;
+$bg-card: #ffffff;
+$border-color: #e2e8f0;
+
+// Typography
+$font-primary: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-size-base-mobile: 0.95rem;
+$font-size-base-tablet: 1rem;
+$font-size-base-desktop: 1.05rem;
+$font-size-h1-mobile: 1.35rem;
+$font-size-h1-tablet: 1.6rem;
+$font-size-h1-desktop: 1.85rem;
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Spacing
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+
+// Layout
+$header-height: 56px;
+$sidebar-width: 220px;
+$ads-width: 180px;

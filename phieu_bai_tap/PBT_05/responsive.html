@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B1 — Responsive Product Page</title>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="#" class="logo">ShopTLU</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="menu-btn" aria-label="Mở menu">☰</label>
+        <nav class="main-nav" aria-label="Menu chính">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Khuyến mãi</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <motion class="page-wrap">
+        <h1 class="page-title">Cửa hàng công nghệ</h1>
+
+        <div class="layout-body">
+            <aside class="sidebar" aria-label="Bộ lọc">
+                <div class="filter-panel">
+                    <h2>Bộ lọc</h2>
+                    <fieldset>
+                        <legend>Danh mục</legend>
+                        <label><input type="checkbox" checked> Điện thoại</label>
+                        <label><input type="checkbox"> Laptop</label>
+                        <label><input type="checkbox"> Phụ kiện</label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Giá</legend>
+                        <label><input type="checkbox"> &lt; 5 triệu</label>
+                        <label><input type="checkbox" checked> 5–20 triệu</label>
+                        <label><input type="checkbox"> &gt; 20 triệu</label>
+                    </fieldset>
+                </div>
+            </aside>
+
+            <main>
+                <section class="product-grid" aria-label="Sản phẩm">
+                    <article class="card featured">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/0f172a/f8fafc?text=iPhone+16" alt="iPhone 16">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">iPhone 16</h2>
+                            <p class="card-price">25.990.000đ</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <motion class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=MacBook" alt="MacBook Pro">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">MacBook Pro</h2>
+                            <p class="card-price">45.990.000đ</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=AirPods" alt="AirPods Pro">
+                        </motion>
+                        <div class="card-body">
+                            <h2 class="card-title">AirPods Pro</h2>
+                            <p class="card-price">5.990.000đ</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=iPad" alt="iPad Air">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">iPad Air</h2>
+                            <p class="card-price">16.990.000đ</p>
+                        </motion>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=Watch" alt="Apple Watch">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Apple Watch</h2>
+                            <p class="card-price">9.990.000đ</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=Keyboard" alt="Magic Keyboard">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Magic Keyboard</h2>
+                            <p class="card-price">3.490.000đ</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=HomePod" alt="HomePod">
+                        </motion>
+                        <div class="card-body">
+                            <h2 class="card-title">HomePod</h2>
+                            <p class="card-price">7.990.000đ</p>
+                        </motion>
+                    </article>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/e2e8f0/334155?text=AirTag" alt="AirTag">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">AirTag (4 pack)</h2>
+                            <p class="card-price">2.990.000đ</p>
+                        </div>
+                    </article>
+                </section>
+            </main>
+
+            <aside class="ads-bar" aria-label="Quảng cáo">
+                <a href="#" class="ad-item">
+                    <img src="https://placehold.co/180x280/1e40af/f8fafc?text=Ads+1" alt="Quảng cáo 1">
+                </a>
+                <a href="#" class="ad-item">
+                    <img src="https://placehold.co/180x200/7c3aed/f8fafc?text=Ads+2" alt="Quảng cáo 2">
+                </a>
+            </aside>
+        </div>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 ShopTLU — PBT_05 Responsive</p>
+            <nav>
+                <a href="#">Chính sách</a>
+                <a href="#">Hỗ trợ</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font-primary;
+    font-size: $font-size-base-mobile;
+    line-height: 1.5;
+    color: $text-color;
+    background: $bg-page;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+// --- Header & navigation ---
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    min-height: $header-height;
+    padding: $spacing-sm $spacing-md;
+    background: $primary-color;
+    color: #fff;
+
+    .logo {
+        font-weight: 800;
+        font-size: 1.1rem;
+        text-decoration: none;
+    }
+
+    .nav-toggle {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+    }
+
+    .menu-btn {
+        @include flex-center;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+        cursor: pointer;
+        border-radius: 6px;
+        user-select: none;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        gap: $spacing-sm;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: $spacing-md;
+        background: $primary-color;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+        a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: $spacing-sm 0;
+
+            &:hover {
+                color: $secondary-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .nav-toggle:checked ~ .main-nav {
+        display: flex;
+    }
+
+    @include respond-to($breakpoint-tablet) {
+        padding: $spacing-sm $spacing-lg;
+
+        .menu-btn {
+            display: none;
+        }
+
+        .main-nav {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            padding: 0;
+            border: none;
+            gap: $spacing-lg;
+        }
+
+        .nav-toggle:checked ~ .main-nav {
+            flex-direction: row;
+        }
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        font-size: $font-size-base-desktop;
+    }
+}
+
+// --- Page layout ---
+.page-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: $spacing-md;
+}
+
+.page-title {
+    font-size: $font-size-h1-mobile;
+    margin: 0 0 $spacing-md;
+
+    @include respond-to($breakpoint-tablet) {
+        font-size: $font-size-h1-tablet;
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        font-size: $font-size-h1-desktop;
+    }
+}
+
+.layout-body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include respond-to($breakpoint-desktop) {
+        display: grid;
+        grid-template-columns: $sidebar-width 1fr $ads-width;
+        align-items: start;
+        gap: $spacing-md;
+    }
+}
+
+// --- Sidebar (ẩn mobile, ngang tablet, cột desktop) ---
+.sidebar {
+    display: none;
+
+    @include respond-to($breakpoint-tablet) {
+        display: block;
+        order: -1;
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        order: 0;
+    }
+
+    .filter-panel {
+        background: $bg-card;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: $spacing-md;
+
+        h2 {
+            margin: 0 0 $spacing-sm;
+            font-size: 1rem;
+        }
+
+        @include respond-to($breakpoint-tablet) {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: $spacing-md $spacing-lg;
+
+            h2 {
+                flex: 0 0 100%;
+            }
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            display: block;
+
+            h2 {
+                flex: none;
+            }
+        }
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        @include respond-to($breakpoint-tablet) {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            flex-wrap: wrap;
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            display: block;
+            margin-bottom: $spacing-md;
+        }
+    }
+
+    legend {
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: $spacing-sm;
+
+        @include respond-to($breakpoint-tablet) {
+            margin-bottom: 0;
+            margin-right: $spacing-sm;
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            margin-bottom: $spacing-sm;
+        }
+    }
+
+    label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.35rem;
+        cursor: pointer;
+
+        @include respond-to($breakpoint-tablet) {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            display: block;
+        }
+    }
+}
+
+// --- Product grid (mobile-first) ---
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+
+    @include respond-to($breakpoint-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    overflow: hidden;
+    @include card-shadow;
+
+    .card-image {
+        overflow: hidden;
+        background: #e2e8f0;
+
+        img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .card-body {
+        padding: $spacing-md;
+    }
+
+    .card-title {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+    }
+
+    .card-price {
+        margin: 0;
+        font-weight: 700;
+        color: $accent-color;
+    }
+
+    &:hover {
+        @include card-shadow(true);
+        transform: translateY(-4px);
+    }
+
+    &.featured {
+        border-color: $secondary-color;
+        box-shadow: 0 0 0 2px rgba($secondary-color, 0.35);
+    }
+}
+
+// --- Ads (desktop only) ---
+.ads-bar {
+    display: none;
+
+    @include respond-to($breakpoint-desktop) {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+    }
+
+    .ad-item {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid $border-color;
+        @include card-shadow;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// --- Footer ---
+.site-footer {
+    margin-top: $spacing-lg;
+    padding: $spacing-md;
+    background: $primary-color;
+    color: #94a3b8;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $spacing-md;
+        margin-top: $spacing-sm;
+
+        a {
+            color: #cbd5e1;
+            text-decoration: none;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    @include respond-to($breakpoint-tablet) {
+        font-size: 1rem;
+    }
+}

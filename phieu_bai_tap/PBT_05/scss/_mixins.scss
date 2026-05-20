@@ -1,0 +1,19 @@
+@mixin respond-to($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin card-shadow($hover: false) {
+    @if $hover {
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+    } @else {
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+}

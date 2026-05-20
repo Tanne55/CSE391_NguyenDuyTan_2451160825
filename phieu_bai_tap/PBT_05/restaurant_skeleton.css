@@ -1,0 +1,140 @@
+/* PBT_05 C2 — CSS skeleton: Đặt bàn nhà hàng (layout only, Mobile-First) */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.hero {
+    min-height: 40vh;
+    background: #cbd5e1 center/cover no-repeat;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px;
+}
+
+.booking-form {
+    display: grid;
+    gap: 12px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+    width: 100%;
+}
+
+.map-wrap {
+    display: none;
+}
+
+.map-fallback {
+    display: block;
+    text-align: center;
+    padding: 12px;
+}
+
+.dish-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.dish-grid img {
+    width: 100%;
+    height: auto;
+}
+
+.site-footer {
+    padding: 24px 16px;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .page-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "hero hero"
+            "form map"
+            "dishes dishes"
+            "footer footer";
+    }
+
+    .hero {
+        grid-area: hero;
+        min-height: 50vh;
+    }
+
+    .booking-form {
+        grid-area: form;
+    }
+
+    .map-wrap {
+        display: block;
+        grid-area: map;
+        min-height: 280px;
+        background: #e2e8f0;
+    }
+
+    .map-fallback {
+        display: none;
+    }
+
+    .dish-grid {
+        grid-area: dishes;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .site-footer {
+        grid-area: footer;
+    }
+}
+
+@media (min-width: 1024px) {
+    .page-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-areas:
+            "hero hero"
+            "form sidebar"
+            "dishes dishes"
+            "footer footer";
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .info-sidebar {
+        grid-area: sidebar;
+    }
+
+    .map-wrap {
+        grid-area: map;
+    }
+
+    .dish-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .site-footer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+}
