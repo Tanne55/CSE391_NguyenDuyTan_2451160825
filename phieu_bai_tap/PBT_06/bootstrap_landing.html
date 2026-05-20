@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B1 Bootstrap — Landing | ShopTLU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .carousel-hero-img { object-fit: cover; height: 420px; }
+        @media (min-width: 768px) { .carousel-hero-img { height: 480px; } }
+        .carousel-caption-custom {
+            background: rgba(15, 23, 42, 0.55);
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+        }
+        .card-img-fixed { height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">ShopTLU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Khuyến mãi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+                </ul>
+                <form class="d-flex me-lg-3 mb-2 mb-lg-0" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tìm sản phẩm..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+                <a href="#" class="btn btn-warning text-dark"><i class="bi bi-cart3"></i> Giỏ hàng</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://placehold.co/1400x480/0f172a/f8fafc?text=Flash+Sale" class="d-block w-100 carousel-hero-img" alt="Flash sale">
+                <div class="carousel-caption carousel-caption-custom">
+                    <h2 class="h1 fw-bold">Flash Sale Công Nghệ</h2>
+                    <p class="mb-3">Giảm đến 40%</p>
+                    <a href="#" class="btn btn-warning btn-lg text-dark">Mua ngay</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://placehold.co/1400x480/1e40af/f8fafc?text=Laptop" class="d-block w-100 carousel-hero-img" alt="Laptop">
+                <div class="carousel-caption carousel-caption-custom">
+                    <h2 class="h1 fw-bold">Laptop Sinh Viên</h2>
+                    <p class="mb-3">Trả góp 0%</p>
+                    <a href="#" class="btn btn-primary btn-lg">Khám phá</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://placehold.co/1400x480/7c3aed/f8fafc?text=Phu+kien" class="d-block w-100 carousel-hero-img" alt="Phụ kiện">
+                <div class="carousel-caption carousel-caption-custom">
+                    <h2 class="h1 fw-bold">Phụ Kiện Chính Hãng</h2>
+                    <p class="mb-3">Freeship đơn từ 300k</p>
+                    <a href="#" class="btn btn-light btn-lg">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <main class="container py-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+            <h1 class="h2 mb-0">Sản phẩm nổi bật</h1>
+            <span class="badge bg-secondary">8 sản phẩm</span>
+        </div>
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://placehold.co/400x240/e2e8f0/334155?text=iPhone+16" class="card-img-top card-img-fixed" alt="iPhone 16">
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">Sale</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">iPhone 16</h2>
+                        <p class="card-text text-danger fw-bold mb-1">25.990.000đ</p>
+                        <p class="card-text text-muted small flex-grow-1">Chip A18.</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://placehold.co/400x240/e2e8f0/334155?text=MacBook" class="card-img-top card-img-fixed" alt="MacBook">
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">Sale</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">MacBook Pro</h2>
+                        <p class="card-text text-danger fw-bold mb-1">45.990.000đ</p>
+                        <p class="card-text text-muted small flex-grow-1">M3 chip.</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/400x240/e2e8f0/334155?text=AirPods" class="card-img-top card-img-fixed" alt="AirPods">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">AirPods Pro</h2>
+                        <p class="card-text text-danger fw-bold mb-1">5.990.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/400x240/e2e8f0/334155?text=iPad" class="card-img-top card-img-fixed" alt="iPad">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">iPad Air</h2>
+                        <p class="card-text text-danger fw-bold mb-1">16.990.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/400x240/e2e8f0/334155?text=Watch" class="card-img-top card-img-fixed" alt="Watch">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">Apple Watch</h2>
+                        <p class="card-text text-danger fw-bold mb-1">9.990.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/400x240/e2e8f0/334155?text=Keyboard" class="card-img-top card-img-fixed" alt="Keyboard">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">Magic Keyboard</h2>
+                        <p class="card-text text-danger fw-bold mb-1">3.490.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://placehold.co/400x240/e2e8f0/334155?text=HomePod" class="card-img-top card-img-fixed" alt="HomePod">
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">Sale</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">HomePod</h2>
+                        <p class="card-text text-danger fw-bold mb-1">7.990.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/400x240/e2e8f0/334155?text=AirTag" class="card-img-top card-img-fixed" alt="AirTag">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">AirTag (4 pack)</h2>
+                        <p class="card-text text-danger fw-bold mb-1">2.990.000đ</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#quickViewModal">Xem nhanh</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="quickViewModalLabel">Chi tiết sản phẩm</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-5">
+                            <img src="https://placehold.co/400x400/e2e8f0/334155?text=Preview" class="img-fluid rounded" alt="Preview">
+                        </div>
+                        <div class="col-md-7">
+                            <span class="badge bg-danger mb-2">Sale</span>
+                            <h3 class="h4">iPhone 16 — 128GB</h3>
+                            <p class="text-danger fs-4 fw-bold">25.990.000đ</p>
+                            <p class="text-muted">Màn OLED 6.1", chip A18, bảo hành 12 tháng.</p>
+                            <button type="button" class="btn btn-primary">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light pt-5 pb-3 mt-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h3 class="h6 text-uppercase">Về ShopTLU</h3>
+                    <p class="small text-secondary">Bootstrap Track A — PBT_06.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h3 class="h6 text-uppercase">Hỗ trợ</h3>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="link-light link-opacity-75">Đổi trả</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h3 class="h6 text-uppercase">Liên kết</h3>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="link-light link-opacity-75">Khuyến mãi</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h3 class="h6 text-uppercase">Liên hệ</h3>
+                    <p class="small text-secondary mb-0">support@shoptlu.vn</p>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <p class="text-center small text-secondary mb-0">&copy; 2026 ShopTLU</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
