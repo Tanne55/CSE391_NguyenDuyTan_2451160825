@@ -150,7 +150,7 @@ body {
     animation: spin 1s linear infinite;
 }
 
-/* 5. Fade-in khi scroll */
+/* 5. Fade-in khi scroll — scroll-driven animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -168,11 +168,23 @@ body {
 
 .scroll-zone .hint {
     color: #64748b;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Đẩy các khối xuống dưới fold để phải scroll mới thấy */
+.scroll-spacer {
+    height: 65vh;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    border-bottom: 1px dashed #cbd5e1;
 }
 
 .scroll-fade {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     padding: 2rem 1.5rem;
     background: #fff;
     border: 1px solid #e2e8f0;
@@ -183,24 +195,7 @@ body {
     transform: translateY(20px);
 }
 
-/* Scroll-driven (Chrome 115+, Safari 26+) */
-@supports (animation-timeline: view()) {
-    .scroll-fade {
-        animation: fadeIn 0.7s ease forwards;
-        animation-timeline: view();
-        animation-range: entry 0% cover 30%;
-    }
-}
-
-/* Fallback: fade khi load + delay (vẫn CSS-only, không JS) */
-@supports not (animation-timeline: view()) {
-    .scroll-fade {
-        animation: fadeIn 0.7s ease forwards;
-    }
-
-    .scroll-fade:nth-child(3) { animation-delay: 0.1s; }
-    .scroll-fade:nth-child(4) { animation-delay: 0.25s; }
-    .scroll-fade:nth-child(5) { animation-delay: 0.4s; }
-    .scroll-fade:nth-child(6) { animation-delay: 0.55s; }
-    .scroll-fade:nth-child(7) { animation-delay: 0.7s; }
+/* @keyframes fadeIn chạy khi cuộn tới (class .in-view) */
+.scroll-fade.in-view {
+    animation: fadeIn 0.85s ease-out forwards;
 }

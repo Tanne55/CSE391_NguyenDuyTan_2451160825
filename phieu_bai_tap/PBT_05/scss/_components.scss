@@ -23,11 +23,20 @@ a {
     color: inherit;
 }
 
+// B3 — @extend / placeholder
+%panel-surface {
+    background: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+}
+
 // --- Header & navigation ---
 .site-header {
     position: sticky;
     top: 0;
     z-index: 100;
+    /* containing block cho menu dropdown mobile */
+    isolation: isolate;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -166,9 +175,7 @@ a {
     }
 
     .filter-panel {
-        background: $bg-card;
-        border: 1px solid $border-color;
-        border-radius: 8px;
+        @extend %panel-surface;
         padding: $spacing-md;
 
         h2 {
@@ -263,8 +270,7 @@ a {
 }
 
 .card {
-    background: $bg-card;
-    border: 1px solid $border-color;
+    @extend %panel-surface;
     border-radius: 10px;
     overflow: hidden;
     @include card-shadow;
