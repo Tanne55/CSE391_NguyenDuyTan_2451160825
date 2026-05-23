@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTTH03 — Validation HTML5 thuần</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge-mode">01 — HTML5 Validation</span>
+        <h1>Quản lý sinh viên</h1>
+        <p class="subtitle">Kiểm tra bằng thuộc tính HTML: required, pattern, type, min/max. Không dùng JS validate.</p>
+
+        <div id="message" class="message" role="status"></div>
+
+        <div class="stats">
+            <div class="stat-card">Tổng sinh viên<strong id="statTotal">0</strong></div>
+            <div class="stat-card">Điểm TB lớp<strong id="statAvg">0</strong></div>
+        </div>
+
+        <div class="toolbar">
+            <button type="button" class="btn btn-primary" id="btnOpenAdd">+ Thêm sinh viên</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Lớp</th>
+                    <th>Điểm TB</th>
+                    <th>Email</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm sinh viên</h2>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnCloseModal" aria-label="Đóng">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- KHÔNG có novalidate — trình duyệt validate -->
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="maSV">Mã sinh viên *</label>
+                        <input type="text" id="maSV" name="maSV" required
+                            pattern="^SV\d{6}$"
+                            title="Mã đúng dạng SV123456 (SV + 6 chữ số)"
+                            placeholder="VD: SV240001"
+                            maxlength="8">
+                        <p class="hint">Pattern: SV + 6 chữ số</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="hoTen">Họ và tên *</label>
+                        <input type="text" id="hoTen" name="hoTen" required minlength="2" maxlength="100"
+                            placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label for="ngaySinh">Ngày sinh *</label>
+                        <input type="date" id="ngaySinh" name="ngaySinh" required max="2010-12-31">
+                    </div>
+                    <div class="form-group">
+                        <label for="lopHoc">Lớp học *</label>
+                        <input type="text" id="lopHoc" name="lopHoc" required minlength="2" maxlength="20"
+                            placeholder="VD: CNTT-K66">
+                    </div>
+                    <div class="form-group">
+                        <label for="diemTB">Điểm trung bình (0–4) *</label>
+                        <input type="number" id="diemTB" name="diemTB" required min="0" max="4" step="0.01"
+                            placeholder="VD: 3.25">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required
+                            placeholder="sv@tlu.edu.vn">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">Lưu</button>
+                        <button type="button" class="btn btn-secondary" id="btnCancel">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/crud-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

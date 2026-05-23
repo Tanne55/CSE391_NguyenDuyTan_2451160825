@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTTH03 — Validation JavaScript thuần</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge-mode">02 — JavaScript Validation</span>
+        <h1>Quản lý sinh viên</h1>
+        <p class="subtitle">Form có <code>novalidate</code> — toàn bộ rule kiểm tra bằng JS, lỗi hiển thị dưới từng ô.</p>
+
+        <div id="message" class="message" role="status"></div>
+
+        <div class="stats">
+            <div class="stat-card">Tổng sinh viên<strong id="statTotal">0</strong></div>
+            <div class="stat-card">Điểm TB lớp<strong id="statAvg">0</strong></div>
+        </div>
+
+        <div class="toolbar">
+            <button type="button" class="btn btn-primary" id="btnOpenAdd">+ Thêm sinh viên</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Lớp</th>
+                    <th>Điểm TB</th>
+                    <th>Email</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm sinh viên</h2>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnCloseModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="studentForm" novalidate>
+                    <div class="form-group">
+                        <label for="maSV">Mã sinh viên *</label>
+                        <input type="text" id="maSV" name="maSV" placeholder="SV240001" maxlength="8">
+                        <div class="error-text" data-error-for="maSV"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hoTen">Họ và tên *</label>
+                        <input type="text" id="hoTen" name="hoTen" placeholder="Nguyễn Văn A">
+                        <div class="error-text" data-error-for="hoTen"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ngaySinh">Ngày sinh *</label>
+                        <input type="date" id="ngaySinh" name="ngaySinh">
+                        <div class="error-text" data-error-for="ngaySinh"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lopHoc">Lớp học *</label>
+                        <input type="text" id="lopHoc" name="lopHoc" placeholder="CNTT-K66">
+                        <div class="error-text" data-error-for="lopHoc"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="diemTB">Điểm trung bình (0–4) *</label>
+                        <input type="text" id="diemTB" name="diemTB" inputmode="decimal" placeholder="3.25">
+                        <div class="error-text" data-error-for="diemTB"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="text" id="email" name="email" placeholder="sv@tlu.edu.vn">
+                        <div class="error-text" data-error-for="email"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <button type="button" class="btn btn-secondary" id="btnCancel">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/crud-core.js"></script>
+    <script src="validation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
