@@ -2,9 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
-import BadCounter from '../components/BadCounter'
-import GoodCounter from '../components/GoodCounter'
-import FlowDemo from '../components/FLowDemo'
+import AndDemo from '../components/AndDemo'
+import ListRendering from '../components/ListRendering'
 import './App.css'
 
 function App() {
@@ -12,9 +11,7 @@ function App() {
 
   return (
     <>
-      <BadCounter />
-      <GoodCounter />
-      <FlowDemo />
+      <ListRendering />
     </>
   )
 }
