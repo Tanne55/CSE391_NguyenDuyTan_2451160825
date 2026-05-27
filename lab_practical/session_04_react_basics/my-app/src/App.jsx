@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import AndDemo from '../components/AndDemo'
+import Header from '../components/Header_Footer'
+import Footer from '../components/Header_Footer'
 import ProductCard from '../components/ProductCard'
 import './App.css'
 
@@ -17,7 +19,10 @@ function App() {
   ];
 
   return (
+    <>
+    <Header />
     <div>
+      
       <h1 style={{ textAlign: "center" }}>Cửa hàng điện thoại</h1>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {products.map(product => (
@@ -29,7 +34,10 @@ function App() {
           />
         ))}
       </div>
+      
     </div>
+    <Footer/>
+    </>
   );
 }
 
