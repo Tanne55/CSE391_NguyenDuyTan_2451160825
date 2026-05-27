@@ -35,4 +35,4 @@
 // console.log([] + {});                // [object Object]
 // console.log({} + []);                // [object Object]
 
-if (" ") console.log("H"); 
+// if (" ") console.log("H"); 
