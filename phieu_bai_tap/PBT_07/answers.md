@@ -117,5 +117,85 @@ var html = "<div class=\"card\">" +
     </div>
 `
 
+PHẦN C — SUY LUẬN (20 điểm)
+Câu C1 (10đ) — Debug JavaScript
+Tìm và sửa TẤT CẢ lỗi trong code sau (có ít nhất 6 lỗi):
+
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ"
+    }
+    
+    var giamGia = giaBan * phanTramGiam / 100
+    let giaSauGiam = giaBan - giamGia
+    
+    if (giaSauGiam = 0) {
+        console.log("Sản phẩm miễn phí!")
+    }
+    
+    return giaSauGiam
+}
+
+// Test
+const gia = tinhGiaGiamGia("100000", 20)
+console.log("Giá sau giảm: " + gia + "đ")
+
+const gia2 = tinhGiaGiamGia(50000, 110)
+console.log("Giá: " + gia2)
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+Liệt kê lỗi + giải thích + cách sửa. Có 1 lỗi "ẩn" liên quan đến var trong vòng lặp — giải thích tại sao và sửa bằng let.
+
+Trả lời: 
+1. Danh sách các lỗi và cách sửa
+Lỗi 1: Dính chữ và thiếu dấu xuống dòng (Lỗi cú pháp)
+Vị trí: return giaSauGiam}// Testconst gia = tinhGiaGiamGia("100000", 20)console.log(...)
+
+Giải thích: Các câu lệnh và ghi chú (// Test, const gia, console.log) bị dính liền trên một dòng mà không có dấu chấm phẩy ; hoặc xuống dòng hợp lý. Điều này khiến trình biên dịch JavaScript bị lỗi cú pháp.
+
+Cách sửa: Tách chúng ra các dòng riêng biệt.
+
+Lỗi 2: Sai toán tử gán thay vì so sánh (Lỗi logic nghiêm trọng)
+Vị trí: if (giaSauGiam = 0)
+
+Giải thích: Dấu = là toán tử gán giá trị, không phải toán tử so sánh. Câu lệnh này sẽ gán giaSauGiam = 0, và biểu thức if (0) luôn trả về false, khiến dòng chữ "Sản phẩm miễn phí!" không bao giờ được in ra, đồng thời làm sai lệch kết quả trả về (luôn trả về 0 nếu điều kiện này chạy).
+
+Cách sửa: Đổi thành toán tử so sánh bằng === (hoặc ==).
+
+Lỗi 3: Truyền sai kiểu dữ liệu (Lỗi Logic/Tối ưu)
+Vị trí: const gia = tinhGiaGiamGia("100000", 20)
+
+Giải thích: Giá bán đang bị truyền vào dưới dạng một chuỗi (String) "100000" chứ không phải số (Number). Dù JavaScript có cơ chế tự động ép kiểu khi thực hiện phép tính nhân/chia, việc truyền sai kiểu dữ liệu rất dễ gây lỗi toán học ở các phép tính khác (như phép cộng + sẽ bị biến thành nối chuỗi).
+
+Cách sửa: Đổi thành kiểu số 100000.
+
+Lỗi 4: Scope của var trong vòng lặp setTimeout (Lỗi "ẩn")
+Vị trí: for (var i = 0; i < 5; i++) { setTimeout(...) }
+
+Giải thích tại sao: Từ khóa var có function-scope hoặc global-scope, không có block-scope. Khi vòng lặp chạy, nó không tạo ra một biến i riêng cho mỗi lượt lặp mà dùng chung một biến i. Hàm setTimeout là bất đồng bộ, nó sẽ đợi 1 giây sau mới chạy. Trong 1 giây đó, vòng lặp for đã chạy xong và biến i đã tăng lên đến 5. Kết quả là màn hình sẽ in ra 5 lần chữ "Item 5" thay vì từ 0 đến 4.
+
+Cách sửa: Thay var i bằng let i. Từ khóa let có block-scope, tạo ra một phạm vi biến riêng biệt cho mỗi lần lặp, giúp giữ đúng giá trị của i tại thời điểm đó.
+
+Lỗi 5: Thiếu các dấu chấm phẩy ; (Lỗi định dạng/Best Practice)
+Vị trí: Cuối các câu lệnh return "Phần trăm giảm không hợp lệ", var giamGia = ..., console.log(...)
+
+Giải thích: Dù JavaScript có cơ chế tự động chèn dấu chấm phẩy (ASI), việc thiếu dấu chấm phẩy ở cuối câu lệnh rất dễ gây ra các lỗi không mong muốn khi gộp file (minify) hoặc viết code liền dòng.
+
+Cách sửa: Thêm ; vào cuối mỗi câu lệnh.
+
+Lỗi 6: Sử dụng var bừa bãi trong hàm (Lỗi Tối ưu)
+Vị trí: var giamGia = giaBan * phanTramGiam / 100
+
+Giải thích: Trong JavaScript hiện đại (ES6+), ta nên hạn chế dùng var vì nó dễ gây rò rỉ biến do không có block-scope. Biến giamGia không bị thay đổi sau khi tính toán, nên dùng const thay vì var.
+
+Cách sửa: Thay var giamGia bằng const giamGia.
+[](./C1.js)
+Câu C2 (10đ) — Bài toán thực tế
+[](./C2.js)
+
 
 
