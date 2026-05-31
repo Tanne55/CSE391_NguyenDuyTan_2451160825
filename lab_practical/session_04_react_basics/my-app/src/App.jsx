@@ -1,120 +1,114 @@
 import { useState } from 'react';
 
-// ===== TIER 1 — Hiểu luồng hoạt động của React =====
+// ===== TIER 2 — Biến trong JSX =====
 
-// Bài 1.1 — Component render lần đầu
-function LifecycleDemo() {
-    console.log("1️⃣ Component được gọi!");
+// Bài 2.1 — Hiển thị biến đơn giản
+function SimpleVariables() {
+    const ten = "Nguyễn Duy Tân";
+    const tuoi = 20;
+    const laSinhVien = true;
+    const monHoc = ["HTML", "CSS", "JS", "React"];
+    const canNang = 70;
+    const chieuCao = 1.75;
+    const bmi = (canNang / (chieuCao * chieuCao)).toFixed(2);
 
     return (
         <div style={{ padding: "20px", border: "2px solid #3498db", borderRadius: "8px" }}>
-            <h2>Lifecycle Demo</h2>
-            <p>Mở Console (F12) để xem log</p>
-            <p>Component này chỉ render MỘT lần</p>
+            <h2>Thông tin cá nhân</h2>
+            <p><strong>Tên:</strong> {ten}</p>
+            <p><strong>Tuổi:</strong> {tuoi} (Năm sau: {tuoi + 1})</p>
+            <p><strong>Sinh viên:</strong> {laSinhVien ? "Có" : "Không"}</p>
+            <p><strong>BMI:</strong> {bmi}</p>
+            <p><strong>Môn học:</strong> {monHoc.join(", ")}</p>
         </div>
     );
 }
 
-// Bài 1.2 — Biến "bình thường" vs useState
-
-// ❌ Counter tệ (dùng biến thường)
-function BadCounter() {
-    let count = 0;  // ← Biến bình thường!
-
-    function handleClick() {
-        count = count + 1;
-        console.log("Count:", count);  // Console: 1, 2, 3...
-        // Nhưng UI KHÔNG cập nhật!
-    }
-
-    return (
-        <div style={{ padding: "20px", border: "2px solid #e74c3c", borderRadius: "8px" }}>
-            <h2>❌ Counter "tệ" (dùng biến thường)</h2>
-            <p>Bộ đếm: {count}</p>
-            <button onClick={handleClick} style={{ padding: "8px 16px", cursor: "pointer" }}>
-                Tăng (+1)
-            </button>
-            <p style={{ color: "red", marginTop: "10px" }}>
-                ⚠️ Nhấn nút → Console tăng, nhưng số trên màn hình KHÔNG đổi!
-            </p>
-        </div>
-    );
-}
-
-// ✅ Counter tốt (dùng useState)
-function GoodCounter() {
-    const [count, setCount] = useState(0);  // ← useState!
-
-    function handleClick() {
-        setCount(count + 1);  // React biết cần re-render!
-    }
-
-    return (
-        <div style={{ padding: "20px", border: "2px solid #27ae60", borderRadius: "8px" }}>
-            <h2>✅ Counter "tốt" (dùng useState)</h2>
-            <p>Bộ đếm: {count}</p>
-            <button onClick={handleClick} style={{ padding: "8px 16px", cursor: "pointer" }}>
-                Tăng (+1)
-            </button>
-            <p style={{ color: "green", marginTop: "10px" }}>
-                ✅ Nhấn nút → Số trên màn hình CẬP NHẬT!
-            </p>
-        </div>
-    );
-}
-
-// Bài 1.3 — Luồng hoạt động (Flow)
-function FlowDemo() {
-    console.log("🔄 Component render!");
-
-    const [step, setStep] = useState(1);
+// Bài 2.2 — Conditional Rendering
+function ConditionalDemo() {
+    const isLoggedIn = true;
+    const score = 85;
+    const hasNotification = true;
+    const notificationCount = 5;
+    const stock = 0;
 
     return (
         <div style={{ padding: "20px", border: "2px solid #9b59b6", borderRadius: "8px" }}>
-            <h2>Luồng hoạt động</h2>
-            <p>Bước hiện tại: {step}</p>
+            <h2>Conditional Rendering</h2>
 
-            <button onClick={() => setStep(step + 1)} style={{ padding: "8px 16px", marginRight: "8px", cursor: "pointer" }}>
-                Bước tiếp theo →
-            </button>
+            {/* Ternary */}
+            <p>{isLoggedIn ? "🟢 Đã đăng nhập" : "🔴 Chưa đăng nhập"}</p>
+            <p>Kết quả: {score >= 50 ? "Đậu ✅" : "Rớt ❌"}</p>
+            <p>Xếp loại: {
+                score >= 90 ? "Xuất sắc" :
+                score >= 80 ? "Giỏi" :
+                score >= 70 ? "Khá" :
+                score >= 50 ? "Trung bình" : "Yếu"
+            }</p>
 
-            <button onClick={() => setStep(1)} style={{ padding: "8px 16px", cursor: "pointer" }}>
-                Quay lại đầu
-            </button>
+            {/* && operator */}
+            {hasNotification && (
+                <div style={{ background: "#fff3cd", padding: "10px", marginTop: "10px", borderRadius: "4px" }}>
+                    📬 Bạn có {notificationCount} thông báo mới!
+                </div>
+            )}
 
-            <div style={{ marginTop: "20px", padding: "10px", background: "#f0f0f0", borderRadius: "4px" }}>
-                {step === 1 && <p>👋 Bước 1: Xin chào!</p>}
-                {step === 2 && <p>📖 Bước 2: Đang học React</p>}
-                {step === 3 && <p>🎯 Bước 3: Hiểu useState</p>}
-                {step === 4 && <p>🎉 Bước 4: Hoàn thành!</p>}
-                {step > 4 && <p>🚀 Bạn đã vượt qua tất cả các bước!</p>}
-            </div>
+            {stock === 0 && <p style={{ color: "red" }}>⚠️ Hết hàng</p>}
         </div>
     );
 }
 
-// Main App component
+// Bài 2.3 — List Rendering
+function ListRendering() {
+    const fruits = ["Táo", "Chuối", "Cam", "Nho"];
+    const students = [
+        { id: 1, name: "Minh", age: 20 },
+        { id: 2, name: "Lan", age: 21 },
+        { id: 3, name: "Hùng", age: 19 }
+    ];
+
+    return (
+        <div style={{ padding: "20px", border: "2px solid #27ae60", borderRadius: "8px" }}>
+            <h2>Danh sách</h2>
+
+            <h3>Trái cây:</h3>
+            <ul>
+                {fruits.map((fruit, index) => (
+                    <li key={index}>{fruit}</li>
+                ))}
+            </ul>
+
+            <h3>Sinh viên:</h3>
+            <ul>
+                {students.map(student => (
+                    <li key={student.id}>
+                        {student.name} - {student.age} tuổi
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+// Main App
 function App() {
     return (
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <h1 style={{ textAlign: 'center', color: '#4a90d9' }}>🎯 Tier 1 — Hiểu luồng hoạt động của React</h1>
+            <h1 style={{ textAlign: 'center', color: '#4a90d9' }}>🎯 Tier 2 — Biến trong JSX</h1>
 
             <section style={{ marginBottom: '40px' }}>
-                <h2>Bài 1.1 — Component render lần đầu</h2>
-                <LifecycleDemo />
+                <h2>Bài 2.1 — Hiển thị biến đơn giản</h2>
+                <SimpleVariables />
             </section>
 
             <section style={{ marginBottom: '40px' }}>
-                <h2>Bài 1.2 — Biến "bình thường" vs useState</h2>
-                <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: '1fr 1fr' }}>
-                    <BadCounter />
-                    <GoodCounter />
-                </div>
+                <h2>Bài 2.2 — Conditional Rendering</h2>
+                <ConditionalDemo />
             </section>
 
             <section style={{ marginBottom: '40px' }}>
-                <h2>Bài 1.3 — Luồng hoạt động (Flow)</h2>
-                <FlowDemo />
+                <h2>Bài 2.3 — List Rendering</h2>
+                <ListRendering />
             </section>
         </div>
     );
