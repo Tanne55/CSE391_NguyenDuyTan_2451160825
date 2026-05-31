@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll Gallery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+        h1 { text-align: center; margin-bottom: 24px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.2s; }
+        .gallery img:hover { transform: scale(1.05); }
+        .loading { text-align: center; padding: 40px; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #333; border-top: 4px solid #4a90d9; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #loadTrigger { height: 1px; }
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000; }
+        .lightbox img { max-width: 90%; max-height: 90vh; }
+        .lightbox.show { display: flex; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Infinite Scroll Gallery</h1>
+        <div class="gallery" id="gallery"></div>
+        <div class="loading" id="loading"><div class="spinner"></div><p>Đang tải...</p></div>
+        <div id="loadTrigger"></div>
+    </div>
+    <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt=""></div>
+    <script>
+        let page = 1;
+        let loading = false;
+
+        async function loadPhotos() {
+            if (loading) return;
+            loading = true;
+            document.querySelector("#loading").style.display = "block";
+
+            try {
+                const res = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=20`);
+                const photos = await res.json();
+
+                const gallery = document.querySelector("#gallery");
+                photos.forEach(photo => {
+                    const img = document.createElement("img");
+                    img.dataset.src = `https://picsum.photos/id/${photo.id}/400/400`;
+                    img.alt = `Photo ${photo.id}`;
+                    img.loading = "lazy";
+                    img.addEventListener("click", () => {
+                        document.querySelector("#lightboxImg").src = `https://picsum.photos/id/${photo.id}/1200/800`;
+                        document.querySelector("#lightbox").classList.add("show");
+                    });
+
+                    // IntersectionObserver for lazy load
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                img.src = img.dataset.src;
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    observer.observe(img);
+
+                    gallery.appendChild(img);
+                });
+
+                page++;
+            } catch (error) {
+                console.error("Error:", error);
+            } finally {
+                loading = false;
+                document.querySelector("#loading").style.display = "none";
+            }
+        }
+
+        // Infinite scroll observer
+        const triggerObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) loadPhotos();
+        });
+        triggerObserver.observe(document.querySelector("#loadTrigger"));
+
+        // Lightbox close
+        document.querySelector("#lightbox").addEventListener("click", (e) => {
+            if (e.target.id === "lightbox") e.target.classList.remove("show");
+        });
+
+        // Initial load
+        loadPhotos();
+    </script>
+</body>
+</html>
