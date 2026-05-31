@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>⌨️ Keyboard Shortcuts App</h1>
+            <p class="hint">Nhấn <kbd>Ctrl+K</kbd> để mở Command Palette</p>
+        </header>
+
+        <section class="gallery-section">
+            <h2>🖼️ Gallery</h2>
+            <p class="hint">← → chuyển ảnh | Space play/pause | 1-9 nhảy ảnh | Esc đóng modal</p>
+            <div class="gallery" role="region" aria-label="Image gallery">
+                <button class="nav-btn prev" aria-label="Ảnh trước">‹</button>
+                <div class="gallery-display">
+                    <img id="galleryImg" src="" alt="Gallery image">
+                    <span class="gallery-counter" aria-live="polite"></span>
+                </div>
+                <button class="nav-btn next" aria-label="Ảnh tiếp">›</button>
+            </div>
+            <div class="gallery-controls">
+                <button id="playBtn" aria-label="Play slideshow">▶ Play</button>
+                <div class="thumbnails" role="tablist" aria-label="Image thumbnails"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Command Palette -->
+    <div id="commandPalette" class="palette-overlay" style="display:none" role="dialog" aria-label="Command palette">
+        <div class="palette">
+            <input type="text" id="paletteInput" placeholder="Nhập lệnh..." aria-label="Search commands" autocomplete="off">
+            <ul id="paletteList" role="listbox"></ul>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay" style="display:none" role="dialog" aria-label="Image lightbox">
+        <button class="lightbox-close" aria-label="Đóng">&times;</button>
+        <img id="lightboxImg" src="" alt="Full size image">
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
