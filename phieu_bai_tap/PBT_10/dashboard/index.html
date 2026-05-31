@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-API Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f7fa; padding: 24px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 24px; }
+        .controls { text-align: center; margin-bottom: 24px; }
+        .btn { padding: 10px 20px; background: #4a90d9; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
+        .btn:hover { background: #357abd; }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .widget { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .widget h2 { margin-bottom: 16px; color: #333; font-size: 1.2rem; }
+        .widget.loading { text-align: center; color: #888; }
+        .widget.error { background: #fee; border-left: 4px solid #e74c3c; }
+        .widget.error h2 { color: #c33; }
+        .user-item, .post-item { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+        .user-item:last-child, .post-item:last-child { border-bottom: none; }
+        .stat { font-size: 2rem; font-weight: bold; color: #4a90d9; }
+        .time-info { text-align: center; margin-top: 16px; color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Multi-API Dashboard</h1>
+        <div class="controls">
+            <button class="btn" id="refreshBtn">🔄 Refresh All</button>
+        </div>
+        <div class="dashboard" id="dashboard"></div>
+        <div class="time-info" id="timeInfo"></div>
+    </div>
+    <script>
+        async function loadDashboard() {
+            const startTime = Date.now();
+            const dashboard = document.querySelector("#dashboard");
+            dashboard.innerHTML = `
+                <div class="widget loading" id="widget1"><h2>👥 Random Users</h2><p>Loading...</p></div>
+                <div class="widget loading" id="widget2"><h2>📝 Recent Posts</h2><p>Loading...</p></div>
+                <div class="widget loading" id="widget3"><h2>🐶 Dog Images</h2><p>Loading...</p></div>
+            `;
+
+            const results = await Promise.allSettled([
+                fetch("https://randomuser.me/api/?results=5").then(r => r.json()),
+                fetch("https://jsonplaceholder.typicode.com/posts?_limit=5").then(r => r.json()),
+                fetch("https://dog.ceo/api/breeds/image/random/3").then(r => r.json())
+            ]);
+
+            // Widget 1: Random Users
+            if (results[0].status === "fulfilled") {
+                const users = results[0].value.results;
+                document.querySelector("#widget1").innerHTML = `
+                    <h2>👥 Random Users</h2>
+                    ${users.map(u => `<div class="user-item">${u.name.first} ${u.name.last}<br><small>${u.email}</small></div>`).join("")}
+                `;
+            } else {
+                document.querySelector("#widget1").innerHTML = `<h2>👥 Random Users</h2><p class="error">Error: ${results[0].reason.message}</p>`;
+                document.querySelector("#widget1").classList.add("error");
+            }
+
+            // Widget 2: Posts
+            if (results[1].status === "fulfilled") {
+                const posts = results[1].value;
+                document.querySelector("#widget2").innerHTML = `
+                    <h2>📝 Recent Posts</h2>
+                    ${posts.map(p => `<div class="post-item"><strong>${p.title}</strong></div>`).join("")}
+                `;
+            } else {
+                document.querySelector("#widget2").innerHTML = `<h2>📝 Recent Posts</h2><p class="error">Error: ${results[1].reason.message}</p>`;
+                document.querySelector("#widget2").classList.add("error");
+            }
+
+            // Widget 3: Dogs
+            if (results[2].status === "fulfilled") {
+                const dogs = results[2].value.message;
+                document.querySelector("#widget3").innerHTML = `
+                    <h2>🐶 Dog Images</h2>
+                    ${dogs.map(url => `<img src="${url}" style="width:100%;border-radius:8px;margin-bottom:8px">`).join("")}
+                `;
+            } else {
+                document.querySelector("#widget3").innerHTML = `<h2>🐶 Dog Images</h2><p class="error">Error: ${results[2].reason.message}</p>`;
+                document.querySelector("#widget3").classList.add("error");
+            }
+
+            const elapsed = Date.now() - startTime;
+            document.querySelector("#timeInfo").textContent = `Data loaded in ${elapsed}ms`;
+        }
+
+        document.querySelector("#refreshBtn").addEventListener("click", loadDashboard);
+        loadDashboard();
+    </script>
+</body>
+</html>
