@@ -145,3 +145,90 @@ console.log(product.specs.ram);        // 16 (BỊ ĐỔI!)
 Giải thích: Spread chỉ copy **shallow** (1 cấp). Property `specs` là object lồng nhau — spread chỉ copy reference (địa chỉ tham chiếu), không copy giá trị bên trong. Do đó `copy.specs` và `product.specs` trỏ đến CÙNG MỘT object trong bộ nhớ. Sửa một bên sẽ ảnh hưởng bên kia.
 
 Để deep copy, cần dùng: `structuredClone(product)` hoặc `JSON.parse(JSON.stringify(product))`.
+
+---
+
+## PHẦN C — SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Refactor Code
+
+**Code SAU khi refactor:**
+
+```javascript
+function processOrders(orders) {
+    return orders
+        .filter(({ status, total }) => status === "completed" && total > 100000)
+        .map(({ id, customer, total }) => ({
+            id,
+            customer,
+            total,
+            discount: total * 0.1,
+            finalTotal: total * 0.9
+        }))
+        .sort((a, b) => b.finalTotal - a.finalTotal);
+}
+```
+
+**Giải thích refactor:**
+
+1. Thay vòng lặp `for` + `if` lồng nhau bằng `.filter()` — lọc đơn hàng completed và total > 100k
+2. Thay tạo object thủ công bằng `.map()` với destructuring — code ngắn gọn, rõ ý
+3. Thay bubble sort thủ công bằng `.sort()` — built-in, tối ưu hơn, 1 dòng
+4. Dùng `const` thay `var`, arrow functions thay function expressions
+5. Chain methods liền mạch — dễ đọc theo flow: lọc → biến đổi → sắp xếp
+
+---
+
+### Câu C2 (10đ) — Thiết kế API miniArray
+
+```javascript
+const miniArray = {
+    map(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result.push(fn(arr[i], i, arr));
+        }
+        return result;
+    },
+
+    filter(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (fn(arr[i], i, arr)) {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    },
+
+    reduce(arr, fn, initialValue) {
+        let accumulator = initialValue;
+        let startIndex = 0;
+
+        // Nếu không truyền initialValue, dùng phần tử đầu tiên
+        if (initialValue === undefined) {
+            if (arr.length === 0) {
+                throw new TypeError("Reduce of empty array with no initial value");
+            }
+            accumulator = arr[0];
+            startIndex = 1;
+        }
+
+        for (let i = startIndex; i < arr.length; i++) {
+            accumulator = fn(accumulator, arr[i], i, arr);
+        }
+        return accumulator;
+    }
+};
+
+// Test:
+// miniArray.map([1,2,3], x => x * 2)         → [2, 4, 6]
+// miniArray.filter([1,2,3,4], x => x > 2)    → [3, 4]
+// miniArray.reduce([1,2,3,4], (a,b) => a+b, 0) → 10
+```
+
+**Giải thích thiết kế:**
+
+- `map`: Duyệt mảng, gọi `fn(element, index, array)` cho mỗi phần tử, push kết quả vào mảng mới. Không mutate mảng gốc.
+- `filter`: Duyệt mảng, chỉ giữ lại phần tử mà `fn` trả về truthy.
+- `reduce`: Tích lũy giá trị qua mỗi phần tử. Nếu không có `initialValue`, dùng phần tử đầu tiên làm accumulator ban đầu và bắt đầu lặp từ index 1. Callback nhận `(accumulator, currentValue, index, array)`.
