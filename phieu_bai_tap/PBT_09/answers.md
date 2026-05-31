@@ -110,3 +110,95 @@ BUTTON
 ```
 
 Giải thích: `stopPropagation()` ngăn event tiếp tục bubble lên parent. Chỉ handler trên button được gọi, #inner và #outer không nhận được event.
+
+---
+
+## PHẦN C — DEBUG & PHÂN TÍCH (15 điểm)
+
+### Câu C1 (8đ) — Debug DOM Code
+
+**Danh sách lỗi:**
+
+**Lỗi 1:** `addEventListener("onclick", ...)` — sai tên event
+- Vị trí: `document.querySelector("#decrementBtn").addEventListener("onclick", ...)`
+- Giải thích: Tên event trong `addEventListener` KHÔNG có prefix "on". `onclick` là property, còn event name là `"click"`.
+- Sửa: `addEventListener("click", ...)`
+
+**Lỗi 2:** `countDisplay = count` — gán lại biến const
+- Vị trí: Trong handler của `#resetBtn`
+- Giải thích: `countDisplay` là DOM element (const). Dòng này gán lại biến thay vì cập nhật nội dung. Cần dùng `.textContent` hoặc `.innerHTML`.
+- Sửa: `countDisplay.textContent = count;`
+
+**Lỗi 3:** `historyList.innerHTML = null` — gán null
+- Vị trí: Trong handler của `#resetBtn`
+- Giải thích: Gán `null` sẽ hiển thị text "null". Muốn xóa nội dung phải gán chuỗi rỗng.
+- Sửa: `historyList.innerHTML = "";`
+
+**Lỗi 4:** `item.remove` — thiếu dấu `()`
+- Vị trí: Trong handler `#clearHistory`
+- Giải thích: `remove` là method, cần gọi bằng `remove()`. Không có `()` thì chỉ tham chiếu hàm mà không thực thi.
+- Sửa: `item.remove();`
+
+**Lỗi 5:** `count = localStorage.getItem("count")` — không parse thành số
+- Vị trí: Trong handler `window load`
+- Giải thích: `localStorage.getItem()` luôn trả về string. Nếu không convert, `count` sẽ là string "0" thay vì number 0, gây lỗi khi `count++` (thành "01", "011"...).
+- Sửa: `count = parseInt(localStorage.getItem("count")) || 0;`
+
+**Lỗi 6:** Load history từ localStorage nhưng không restore event listeners
+- Vị trí: Handler `window load` — chỉ restore count, không restore history items
+- Giải thích: Khi load lại, các `<li>` trong history được khôi phục qua `innerHTML` nhưng không có event listener để xóa từng item.
+- Sửa: Sau khi set `historyList.innerHTML`, cần bind lại events cho các `<li>` hoặc dùng Event Delegation.
+
+**Lỗi 7:** `localStorage.getItem("count")` có thể trả về `null` lần đầu
+- Vị trí: Handler `window load`
+- Giải thích: Lần đầu mở trang, chưa có data trong localStorage → `getItem` trả về `null` → `parseInt(null)` = `NaN`.
+- Sửa: `count = parseInt(localStorage.getItem("count")) || 0;` (dùng `|| 0` fallback)
+
+---
+
+### Câu C2 (7đ) — Performance
+
+**1. Tại sao bind event lên 1000 elements riêng lẻ là BAD PRACTICE?**
+
+- **Bộ nhớ:** Mỗi event listener chiếm bộ nhớ. 1000 listeners = 1000 function references + 1000 closures.
+- **Performance:** Khi thêm/xóa elements động (CRUD), phải manually add/remove listeners → dễ memory leak nếu quên.
+- **Khởi tạo chậm:** Bind 1000 lần khi page load tốn thời gian.
+
+**Event Delegation giải quyết:**
+- Chỉ bind 1 listener lên parent container
+- Dùng `e.target` để xác định element nào được click
+- Elements thêm/xóa động tự động được handle mà không cần bind lại
+
+```javascript
+// BAD: 1000 listeners
+document.querySelectorAll(".item").forEach(item => {
+    item.addEventListener("click", handleClick);
+});
+
+// GOOD: 1 listener (Event Delegation)
+document.querySelector("#container").addEventListener("click", (e) => {
+    if (e.target.classList.contains("item")) {
+        handleClick(e);
+    }
+});
+```
+
+**2. Refactor dùng DocumentFragment:**
+
+```javascript
+const fragment = document.createDocumentFragment();
+
+for (let i = 0; i < 1000; i++) {
+    const div = document.createElement("div");
+    div.textContent = `Item ${i}`;
+    fragment.appendChild(div);  // Append vào fragment (trong memory, không gây reflow)
+}
+
+document.body.appendChild(fragment);  // 1 lần reflow duy nhất
+```
+
+**Giải thích tại sao nhanh hơn:**
+- `DocumentFragment` là container ảo tồn tại trong memory, KHÔNG thuộc DOM tree.
+- Append vào fragment không trigger reflow/repaint vì browser không cần tính toán layout.
+- Khi append fragment vào DOM, browser chỉ thực hiện 1 lần reflow cho toàn bộ 1000 elements.
+- Code gốc gọi `appendChild` 1000 lần trực tiếp lên `document.body` → mỗi lần browser phải recalculate layout → 1000 lần reflow = cực chậm.
